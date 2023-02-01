@@ -1,0 +1,770 @@
+[
+  {
+    "name": "安哥拉",
+    "alias": "Angola"
+  },
+  {
+    "name": "阿富汗",
+    "alias": "Afghanistan"
+  },
+  {
+    "name": "阿尔巴尼亚",
+    "alias": "Albania"
+  },
+  {
+    "name": "阿尔及利亚",
+    "alias": "Algeria"
+  },
+  {
+    "name": "安道尔共和国",
+    "alias": "Andorra"
+  },
+  {
+    "name": "安圭拉岛",
+    "alias": "Anguilla"
+  },
+  {
+    "name": "安提瓜和巴布达",
+    "alias": "Antigua and Barbuda"
+  },
+  {
+    "name": "阿根廷",
+    "alias": "Argentina"
+  },
+  {
+    "name": "亚美尼亚",
+    "alias": "Armenia"
+  },
+  {
+    "name": "阿森松",
+    "alias": "Ascension"
+  },
+  {
+    "name": "澳大利亚",
+    "alias": "Australia"
+  },
+  {
+    "name": "奥地利",
+    "alias": "Austria"
+  },
+  {
+    "name": "阿塞拜疆",
+    "alias": "Azerbaijan"
+  },
+  {
+    "name": "巴哈马",
+    "alias": "Bahamas"
+  },
+  {
+    "name": "巴林",
+    "alias": "Bahrain"
+  },
+  {
+    "name": "孟加拉国",
+    "alias": "Bangladesh"
+  },
+  {
+    "name": "巴巴多斯",
+    "alias": "Barbados"
+  },
+  {
+    "name": "白俄罗斯",
+    "alias": "Belarus"
+  },
+  {
+    "name": "比利时",
+    "alias": "Belgium"
+  },
+  {
+    "name": "伯利兹",
+    "alias": "Belize"
+  },
+  {
+    "name": "贝宁",
+    "alias": "Benin"
+  },
+  {
+    "name": "百慕大群岛",
+    "alias": "Bermuda Is"
+  },
+  {
+    "name": "玻利维亚",
+    "alias": "Bolivia"
+  },
+  {
+    "name": "博茨瓦纳",
+    "alias": "Botswana"
+  },
+  {
+    "name": "巴西",
+    "alias": "Brazil"
+  },
+  {
+    "name": "文莱",
+    "alias": "Brunei"
+  },
+  {
+    "name": "保加利亚",
+    "alias": "Bulgaria"
+  },
+  {
+    "name": "布基纳法索",
+    "alias": "Burkina Faso"
+  },
+  {
+    "name": "缅甸",
+    "alias": "Burma"
+  },
+  {
+    "name": "布隆迪",
+    "alias": "Burundi"
+  },
+  {
+    "name": "喀麦隆",
+    "alias": "Cameroon"
+  },
+  {
+    "name": "加拿大",
+    "alias": "Canada"
+  },
+  {
+    "name": "开曼群岛",
+    "alias": "Cayman Is"
+  },
+  {
+    "name": "中非共和国",
+    "alias": "Central African Republic"
+  },
+  {
+    "name": "乍得",
+    "alias": "Chad"
+  },
+  {
+    "name": "智利",
+    "alias": "Chile"
+  },
+  {
+    "name": "中国",
+    "alias": "China"
+  },
+  {
+    "name": "哥伦比亚",
+    "alias": "Colombia"
+  },
+  {
+    "name": "刚果",
+    "alias": "Congo"
+  },
+  {
+    "name": "库克群岛",
+    "alias": "Cook Is"
+  },
+  {
+    "name": "哥斯达黎加",
+    "alias": "Costa Rica"
+  },
+  {
+    "name": "古巴",
+    "alias": "Cuba"
+  },
+  {
+    "name": "塞浦路斯",
+    "alias": "Cyprus"
+  },
+  {
+    "name": "捷克",
+    "alias": "Czech Republic"
+  },
+  {
+    "name": "丹麦",
+    "alias": "Denmark"
+  },
+  {
+    "name": "吉布提",
+    "alias": "Djibouti"
+  },
+  {
+    "name": "多米尼加共和国",
+    "alias": "Dominica Rep"
+  },
+  {
+    "name": "厄瓜多尔",
+    "alias": "Ecuador"
+  },
+  {
+    "name": "埃及",
+    "alias": "Egypt"
+  },
+  {
+    "name": "萨尔瓦多",
+    "alias": "EI Salvador"
+  },
+  {
+    "name": "爱沙尼亚",
+    "alias": "Estonia"
+  },
+  {
+    "name": "埃塞俄比亚",
+    "alias": "Ethiopia"
+  },
+  {
+    "name": "斐济",
+    "alias": "Fiji"
+  },
+  {
+    "name": "芬兰",
+    "alias": "Finland"
+  },
+  {
+    "name": "法国",
+    "alias": "France"
+  },
+  {
+    "name": "法属圭亚那",
+    "alias": "French Guiana"
+  },
+  {
+    "name": "法属玻利尼西亚",
+    "alias": "French Polynesia"
+  },
+  {
+    "name": "加蓬",
+    "alias": "Gabon"
+  },
+  {
+    "name": "冈比亚",
+    "alias": "Gambia"
+  },
+  {
+    "name": "格鲁吉亚",
+    "alias": "Georgia"
+  },
+  {
+    "name": "德国",
+    "alias": "Germany"
+  },
+  {
+    "name": "加纳",
+    "alias": "Ghana"
+  },
+  {
+    "name": "直布罗陀",
+    "alias": "Gibraltar"
+  },
+  {
+    "name": "希腊",
+    "alias": "Greece"
+  },
+  {
+    "name": "格林纳达",
+    "alias": "Grenada"
+  },
+  {
+    "name": "关岛",
+    "alias": "Guam"
+  },
+  {
+    "name": "危地马拉",
+    "alias": "Guatemala"
+  },
+  {
+    "name": "几内亚",
+    "alias": "Guinea"
+  },
+  {
+    "name": "圭亚那",
+    "alias": "Guyana"
+  },
+  {
+    "name": "海地",
+    "alias": "Haiti"
+  },
+  {
+    "name": "洪都拉斯",
+    "alias": "Honduras"
+  },
+  {
+    "name": "香港",
+    "alias": "Hong Kong"
+  },
+  {
+    "name": "匈牙利",
+    "alias": "Hungary"
+  },
+  {
+    "name": "冰岛",
+    "alias": "Iceland"
+  },
+  {
+    "name": "印度",
+    "alias": "India"
+  },
+  {
+    "name": "印度尼西亚",
+    "alias": "Indonesia"
+  },
+  {
+    "name": "伊朗",
+    "alias": "Iran"
+  },
+  {
+    "name": "伊拉克",
+    "alias": "Iraq"
+  },
+  {
+    "name": "爱尔兰",
+    "alias": "Ireland"
+  },
+  {
+    "name": "以色列",
+    "alias": "Israel"
+  },
+  {
+    "name": "意大利",
+    "alias": "Italy"
+  },
+  {
+    "name": "科特迪瓦",
+    "alias": "Ivory Coast"
+  },
+  {
+    "name": "牙买加",
+    "alias": "Jamaica"
+  },
+  {
+    "name": "日本",
+    "alias": "Japan"
+  },
+  {
+    "name": "约旦",
+    "alias": "Jordan"
+  },
+  {
+    "name": "柬埔寨",
+    "alias": "Kampuchea (Cambodia )"
+  },
+  {
+    "name": "哈萨克斯坦",
+    "alias": "Kazakhstan"
+  },
+  {
+    "name": "肯尼亚",
+    "alias": "Kenya"
+  },
+  {
+    "name": "韩国",
+    "alias": "Korea"
+  },
+  {
+    "name": "科威特",
+    "alias": "Kuwait"
+  },
+  {
+    "name": "吉尔吉斯坦",
+    "alias": "Kyrgyzstan"
+  },
+  {
+    "name": "老挝",
+    "alias": "Laos"
+  },
+  {
+    "name": "拉脱维亚",
+    "alias": "Latvia"
+  },
+  {
+    "name": "黎巴嫩",
+    "alias": "Lebanon"
+  },
+  {
+    "name": "莱索托",
+    "alias": "Lesotho"
+  },
+  {
+    "name": "利比里亚",
+    "alias": "Liberia"
+  },
+  {
+    "name": "利比亚",
+    "alias": "Libya"
+  },
+  {
+    "name": "列支敦士登",
+    "alias": "Liechtenstein"
+  },
+  {
+    "name": "立陶宛",
+    "alias": "Lithuania"
+  },
+  {
+    "name": "卢森堡",
+    "alias": "Luxembourg"
+  },
+  {
+    "name": "澳门",
+    "alias": "Macao"
+  },
+  {
+    "name": "马达加斯加",
+    "alias": "Madagascar"
+  },
+  {
+    "name": "马拉维",
+    "alias": "Malawi"
+  },
+  {
+    "name": "马来西亚",
+    "alias": "Malaysia"
+  },
+  {
+    "name": "马尔代夫",
+    "alias": "Maldives"
+  },
+  {
+    "name": "马里",
+    "alias": "Mali"
+  },
+  {
+    "name": "马耳他",
+    "alias": "Malta"
+  },
+  {
+    "name": "马里亚那群岛",
+    "alias": "Mariana Is"
+  },
+  {
+    "name": "马提尼克",
+    "alias": "Martinique"
+  },
+  {
+    "name": "毛里求斯",
+    "alias": "Mauritius"
+  },
+  {
+    "name": "墨西哥",
+    "alias": "Mexico"
+  },
+  {
+    "name": "摩尔多瓦",
+    "alias": "Moldova"
+  },
+  {
+    "name": "摩纳哥",
+    "alias": "Monaco"
+  },
+  {
+    "name": "蒙古",
+    "alias": "Mongolia"
+  },
+  {
+    "name": "蒙特塞拉特岛",
+    "alias": "Montserrat Is"
+  },
+  {
+    "name": "摩洛哥",
+    "alias": "Morocco"
+  },
+  {
+    "name": "莫桑比克",
+    "alias": "Mozambique"
+  },
+  {
+    "name": "纳米比亚",
+    "alias": "Namibia"
+  },
+  {
+    "name": "瑙鲁",
+    "alias": "Nauru"
+  },
+  {
+    "name": "尼泊尔",
+    "alias": "Nepal"
+  },
+  {
+    "name": "荷属安的列斯",
+    "alias": "Netherlands Antilles"
+  },
+  {
+    "name": "荷兰",
+    "alias": "Netherlands"
+  },
+  {
+    "name": "新西兰",
+    "alias": "New Zealand"
+  },
+  {
+    "name": "尼加拉瓜",
+    "alias": "Nicaragua"
+  },
+  {
+    "name": "尼日尔",
+    "alias": "Niger"
+  },
+  {
+    "name": "尼日利亚",
+    "alias": "Nigeria"
+  },
+  {
+    "name": "朝鲜",
+    "alias": "North Korea"
+  },
+  {
+    "name": "挪威",
+    "alias": "Norway"
+  },
+  {
+    "name": "阿曼",
+    "alias": "Oman"
+  },
+  {
+    "name": "巴基斯坦",
+    "alias": "Pakistan"
+  },
+  {
+    "name": "巴拿马",
+    "alias": "Panama"
+  },
+  {
+    "name": "巴布亚新几内亚",
+    "alias": "Papua New Guinea"
+  },
+  {
+    "name": "巴拉圭",
+    "alias": "Paraguay"
+  },
+  {
+    "name": "秘鲁",
+    "alias": "Peru"
+  },
+  {
+    "name": "菲律宾",
+    "alias": "Philippines"
+  },
+  {
+    "name": "波兰",
+    "alias": "Poland"
+  },
+  {
+    "name": "葡萄牙",
+    "alias": "Portugal"
+  },
+  {
+    "name": "波多黎各",
+    "alias": "Puerto Rico"
+  },
+  {
+    "name": "卡塔尔",
+    "alias": "Qatar"
+  },
+  {
+    "name": "留尼旺",
+    "alias": "Reunion"
+  },
+  {
+    "name": "罗马尼亚",
+    "alias": "Romania"
+  },
+  {
+    "name": "俄罗斯",
+    "alias": "Russia"
+  },
+  {
+    "name": "圣卢西亚",
+    "alias": "Saint Lucia"
+  },
+  {
+    "name": "圣文森特岛",
+    "alias": "Saint Vincent"
+  },
+  {
+    "name": "东萨摩亚(美)",
+    "alias": "Samoa Eastern"
+  },
+  {
+    "name": "西萨摩亚",
+    "alias": "Samoa Western"
+  },
+  {
+    "name": "圣马力诺",
+    "alias": "San Marino"
+  },
+  {
+    "name": "圣多美和普林西比",
+    "alias": "Sao Tome and Principe"
+  },
+  {
+    "name": "沙特阿拉伯",
+    "alias": "Saudi Arabia"
+  },
+  {
+    "name": "塞内加尔",
+    "alias": "Senegal"
+  },
+  {
+    "name": "塞舌尔",
+    "alias": "Seychelles"
+  },
+  {
+    "name": "塞拉利昂",
+    "alias": "Sierra Leone"
+  },
+  {
+    "name": "新加坡",
+    "alias": "Singapore"
+  },
+  {
+    "name": "斯洛伐克",
+    "alias": "Slovakia"
+  },
+  {
+    "name": "斯洛文尼亚",
+    "alias": "Slovenia"
+  },
+  {
+    "name": "所罗门群岛",
+    "alias": "Solomon Is"
+  },
+  {
+    "name": "索马里",
+    "alias": "Somali"
+  },
+  {
+    "name": "南非",
+    "alias": "South Africa"
+  },
+  {
+    "name": "西班牙",
+    "alias": "Spain"
+  },
+  {
+    "name": "斯里兰卡",
+    "alias": "SriLanka"
+  },
+  {
+    "name": "圣卢西亚",
+    "alias": "St.Lucia"
+  },
+  {
+    "name": "圣文森特",
+    "alias": "St.Vincent"
+  },
+  {
+    "name": "苏丹",
+    "alias": "Sudan"
+  },
+  {
+    "name": "苏里南",
+    "alias": "Suriname"
+  },
+  {
+    "name": "斯威士兰",
+    "alias": "Swaziland"
+  },
+  {
+    "name": "瑞典",
+    "alias": "Sweden"
+  },
+  {
+    "name": "瑞士",
+    "alias": "Switzerland"
+  },
+  {
+    "name": "叙利亚",
+    "alias": "Syria"
+  },
+  {
+    "name": "台湾省",
+    "alias": "Taiwan"
+  },
+  {
+    "name": "塔吉克斯坦",
+    "alias": "Tajikistan"
+  },
+  {
+    "name": "坦桑尼亚",
+    "alias": "Tanzania"
+  },
+  {
+    "name": "泰国",
+    "alias": "Thailand"
+  },
+  {
+    "name": "多哥",
+    "alias": "Togo"
+  },
+  {
+    "name": "汤加",
+    "alias": "Tonga"
+  },
+  {
+    "name": "特立尼达和多巴哥",
+    "alias": "Trinidad and Tobago"
+  },
+  {
+    "name": "突尼斯",
+    "alias": "Tunisia"
+  },
+  {
+    "name": "土耳其",
+    "alias": "Turkey"
+  },
+  {
+    "name": "土库曼斯坦",
+    "alias": "Turkmenistan"
+  },
+  {
+    "name": "乌干达",
+    "alias": "Uganda"
+  },
+  {
+    "name": "乌克兰",
+    "alias": "Ukraine"
+  },
+  {
+    "name": "阿拉伯联合酋长国",
+    "alias": "United Arab Emirates"
+  },
+  {
+    "name": "英国",
+    "alias": "the United Kingdom"
+  },
+  {
+    "name": "美国",
+    "alias": "United States of America"
+  },
+  {
+    "name": "乌拉圭",
+    "alias": "Uruguay"
+  },
+  {
+    "name": "乌兹别克斯坦",
+    "alias": "Uzbekistan"
+  },
+  {
+    "name": "委内瑞拉",
+    "alias": "Venezuela"
+  },
+  {
+    "name": "越南",
+    "alias": "Vietnam"
+  },
+  {
+    "name": "也门",
+    "alias": "Yemen"
+  },
+  {
+    "name": "南斯拉夫",
+    "alias": "Yugoslavia"
+  },
+  {
+    "name": "津巴布韦",
+    "alias": "Zimbabwe"
+  },
+  {
+    "name": "扎伊尔",
+    "alias": "Zaire"
+  },
+  {
+    "name": "赞比亚",
+    "alias": "Zambia"
+  }
+]
