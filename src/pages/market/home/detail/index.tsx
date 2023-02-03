@@ -8,6 +8,8 @@ import useWhere2go from '@/hooks/useWhere2go';
 import './index.less';
 
 import { useEffect } from 'react';
+import { useModal } from '@/hooks/useModal';
+import PostModal from '@/components/postModal';
 
 const Index: React.FC = () => {
   const [state, setState] = useUrlState();
@@ -17,6 +19,8 @@ const Index: React.FC = () => {
   );
 
   const { goHome } = useWhere2go();
+
+  const postFormModal = useModal({});
 
   const items: TabsProps['items'] = [
     {
@@ -59,17 +63,22 @@ const Index: React.FC = () => {
   return (
     <div className="md_market-detail">
       <Tabs activeKey={currentKey} items={items} onChange={onChange} />
-      <FloatButton.Group
-        shape="square"
-        style={{ right: 20, backGroundColor: 'red' }}
-      >
-        <FloatButton icon={<EditOutlined />} description={'发布'} />
+      <FloatButton.Group shape="square" style={{ right: 20 }}>
+        <FloatButton
+          onClick={postFormModal.show}
+          icon={<EditOutlined />}
+          description={'发布'}
+        />
         <FloatButton
           icon={<HomeOutlined />}
           description={'首页'}
           onClick={goHome}
         />
       </FloatButton.Group>
+      <PostModal
+        visible={postFormModal.visible}
+        onCancel={postFormModal.hide}
+      />
     </div>
   );
 };

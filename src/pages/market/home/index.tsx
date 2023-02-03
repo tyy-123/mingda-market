@@ -9,8 +9,12 @@ import { Image, FloatButton } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
+import { useModal } from '@/hooks/useModal';
+import PostModal from '@/components/postModal';
 const Index = () => {
   const { goMarketDetail } = useWhere2go();
+  //发布帖子Modal
+  const postFormModal = useModal({});
 
   const marketModuleItems = [
     {
@@ -58,7 +62,11 @@ const Index = () => {
       <FloatButton
         icon={<PlusCircleFilled style={{ color: '#43ba9d' }} />}
         style={{ bottom: 100 }}
-        onClick={() => console.log('click')}
+        onClick={postFormModal.show}
+      />
+      <PostModal
+        visible={postFormModal.visible}
+        onCancel={postFormModal.hide}
       />
     </div>
   );
