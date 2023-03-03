@@ -16,4 +16,52 @@ export default defineConfig({
   //   { path: '/', component: '@/pages/index' },
   // ],
   fastRefresh: {},
+  chainWebpack(config: any) {
+    config.module
+      .rule('fonts')
+      .test(/\.(otf|ttc|ttf|eot|svg|woff(2)?)(\?[a-z\d]+)?$/)
+      .use('file-loader')
+      .loader('file-loader');
+
+    // config.module
+    //   .rule('svg')
+    //   .test(/.svg(\?v=\d+.\d+.\d+)?$/)
+    //   .use([
+    //     {
+    //       loader: 'babel-loader',
+    //     },
+    //     {
+    //       loader: '@svgr/webpack',
+    //       options: {
+    //         babel: false,
+    //         icon: true,
+    //       },
+    //     },
+    //   ])
+    //   .loader(require.resolve('@svgr/webpack'));
+
+    config.module
+      .rule('bpmn')
+      .test(/\.bpmn$/)
+      .use('raw-loader')
+      .loader('raw-loader');
+    config.module
+      .rule('jsx')
+      .test(/\.m?js$/)
+      .exclude.add(/node_modules/)
+      .end()
+      .use('babel-loader')
+      .loader('babel-loader')
+      .options({
+        plugins: [
+          [
+            '@babel/plugin-transform-react-jsx',
+            {
+              importSource: '@bpmn-io/properties-panel/preact',
+              runtime: 'automatic',
+            },
+          ],
+        ],
+      });
+  },
 });
