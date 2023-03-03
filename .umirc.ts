@@ -1,6 +1,19 @@
 import { APP_NAME, TITLE } from './src/constants';
 import { defineConfig } from 'umi';
 
+const path = ['/api'];
+
+const getProxy = () => {
+  const map: any = {};
+  path.forEach((item) => {
+    map[item] = {
+      target: 'http://localhost:8001/',
+      changeOrigin: true,
+    };
+  });
+  return map;
+};
+
 export default defineConfig({
   title: TITLE,
   history: { type: 'hash' },
@@ -11,6 +24,9 @@ export default defineConfig({
     compress: {
       drop_console: true,
     },
+  },
+  proxy: {
+    ...getProxy(),
   },
   // routes: [
   //   { path: '/', component: '@/pages/index' },

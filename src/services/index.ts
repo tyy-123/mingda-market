@@ -58,8 +58,9 @@ export async function jdAjax(
 ) {
   try {
     const res = await jdAjaxCode(obj, config);
+    console.log(res);
     if (!res) throw new Error();
-    else return res.result;
+    else return res;
   } catch (error) {
     console.log(error);
   }

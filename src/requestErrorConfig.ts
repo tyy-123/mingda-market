@@ -2,7 +2,7 @@
 import { getToken, getUrlToken } from './common/utils';
 
 // 请求前缀
-export const URL_PREFIX = '';
+export const URL_PREFIX = '/api';
 
 const SUCCESS = 200;
 const UN_AUTHORIZATION = 401;
@@ -33,9 +33,10 @@ export const errorConfig: RequestConfig = {
           resData.ErrorCode === 0 ||
           resData.ActionStatus === 'OK',
         errorMessage:
-          resData.message ||
-          resData.ErrorInfo ||
-          resData.error_description ||
+        resData.title ||
+          // resData.message ||
+          // resData.ErrorInfo ||
+          // resData.error_description ||
           '未知错误',
         showType: 2,
         errorCode: code || resData.ErrorCode,
