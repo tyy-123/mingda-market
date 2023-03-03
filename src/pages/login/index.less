@@ -1,0 +1,86 @@
+.jd__login-page {
+  height: 100%;
+  background-size: 100% 100%;
+  position: relative;
+
+  .jd__copyright-component {
+    position: absolute;
+    left: 50%;
+    bottom: 76px;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 34px 76px 44px 76px;
+    width: calc(520px - 76px * 2);
+    height: calc(640px - 78px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: unset;
+
+    .login-welcome,
+    .login-way {
+      width: 100%;
+      text-align: left;
+    }
+
+    .login-register-forget {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .login-welcome-txt {
+      font-size: 24px;
+      font-weight: 500;
+      color: #000000;
+    }
+
+    .login-way-txt {
+      font-size: 16px;
+      font-weight: 400;
+      color: #8f0003;
+      margin-top: 24px;
+    }
+
+    .jd__logo-component {
+      height: unset;
+      margin: 24px 0;
+
+      .logo {
+        width: 45px;
+        height: 55px;
+      }
+
+      .logo-title {
+        width: 216px;
+        height: 24px;
+        margin-top: 8px;
+      }
+    }
+
+    .ant-pro-form-login-container {
+      margin: 24px 0 0 0;
+      padding: 0;
+      width: 100% !important;
+
+      .ant-pro-form-login-main {
+        margin: 0;
+        width: 100% !important;
+
+        .ant-pro {
+          .ant-btn-primary {
+            overflow: hidden;
+            background-color: #8f0003;
+          }
+        }
+      }
+    }
+  }
+}
+
