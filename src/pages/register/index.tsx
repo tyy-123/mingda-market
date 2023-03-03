@@ -16,7 +16,7 @@ import {
 } from '@ant-design/icons';
 import { Button, message } from 'antd';
 import useWhere2go from '@/hooks/useWhere2go';
-// import { apiAuth, jdAjax, jdMixAjax } from '@/services';
+import { user, jdAjax, jdMixAjax } from '@/services';
 import { REX_NAME, REX_PHONE, REX_PWD, setToken } from '@/common/utils';
 // import useUser from '@/hooks/useUser';
 import { useBoolean } from 'ahooks';
@@ -44,7 +44,7 @@ const Register: React.FC<RegisterProps> = () => {
   // const { refreshUser, isAccountExist } = useUser();
   const [isJumping, { setTrue, setFalse }] = useBoolean(false);
 
-  // const registerAjax = jdMixAjax(apiAuth.register_post);
+  const registerAjax = jdMixAjax(user.register_post);
 
   /**
    * 验证账号
@@ -52,7 +52,8 @@ const Register: React.FC<RegisterProps> = () => {
   const handleVerifyAccount = async (_: any, username: string) => {
     // const isExist = await isAccountExist(username);
     // if (isExist) return Promise.reject(new Error('该账号已存在，请重新输入'));
-    // else return Promise.resolve();
+    // else
+    return Promise.resolve();
   };
 
   /**
@@ -60,12 +61,15 @@ const Register: React.FC<RegisterProps> = () => {
    * @param email 邮箱
    */
   const handleGetCode = async (email: string) => {
-    // try {
-    //   await jdAjax({ params: { email } }, apiAuth.code_get);
-    //   message.success(`已向 ${email} 发送验证码，请注意查收`);
-    // } catch (error) {
-    //   throw new Error(langContext.lang.register.codeError);
-    // }
+    console.log(email);
+    try {
+      let res = await jdAjax({ params: { email } }, user.getCode_get);
+      console.log(res);
+      if (res.code === 200)
+        message.success(`已向 ${email} 发送验证码，请注意查收`);
+    } catch (error) {
+      throw new Error(langContext.lang.register.codeError);
+    }
   };
 
   /**
@@ -73,31 +77,29 @@ const Register: React.FC<RegisterProps> = () => {
    * @param values
    */
   const handleRegister = async (values: RegisterData) => {
-    console.log(values);
-    
-    // try {
-    //   const res = await registerAjax.run({
-    //     data: {
-    //       ...values,
-    //     },
-    //   });
-
-    //   if (res) {
-    //     setToken(res.token);
-    //     setTrue();
-    //     setTimeout(async () => {
-    //       message.success('注册成功');
-    //       await refreshUser();
-    //       setTimeout(() => {
-    //         setFalse();
-    //         goHome();
-    //       }, 1000);
-    //     }, 300);
-    //   } else throw new Error();
-    // } catch (error) {
-    //   console.error(error);
-    //   setFalse();
-    // }
+    try {
+      const res = await registerAjax.run({
+        params: {
+          ...values,
+        },
+      });
+      console.log(res);     
+      if (res) {
+        setToken(res.token);
+        setTrue();
+        setTimeout(async () => {
+          message.success('注册成功');
+          // await refreshUser();
+          setTimeout(() => {
+            setFalse();
+            goHome();
+          }, 1000);
+        }, 300);
+      } else throw new Error();
+    } catch (error) {
+      console.error(error);
+      setFalse();
+    }
   };
 
   const cls = classNames('jd__register-page');
@@ -131,7 +133,7 @@ const Register: React.FC<RegisterProps> = () => {
           onFinish={handleRegister}
         >
           <ProFormText
-            name="username"
+            name="email"
             fieldProps={{
               size: 'large',
               prefix: <MailOutlined className={'prefixIcon'} />,
@@ -154,7 +156,7 @@ const Register: React.FC<RegisterProps> = () => {
             ]}
           />
           <ProFormText
-            name="name"
+            name="username"
             fieldProps={{
               size: 'large',
               prefix: <UserOutlined className={'prefixIcon'} />,
@@ -169,42 +171,6 @@ const Register: React.FC<RegisterProps> = () => {
               },
             ]}
           />
-          {/* <ProFormText
-            name="phone"
-            fieldProps={{
-              size: 'large',
-              prefix: <PhoneOutlined className={'prefixIcon'} />,
-              maxLength: 11,
-            }}
-            placeholder={'请输入手机号'}
-            rules={[
-              {
-                required: true,
-                whitespace: true,
-                message: '请输入手机号',
-              },
-              {
-                pattern: REX_PHONE,
-                message: langContext.lang.register.phoneError,
-              },
-            ]}
-          />
-          <ProFormText
-            name="org"
-            fieldProps={{
-              size: 'large',
-              prefix: <BankOutlined className={'prefixIcon'} />,
-              maxLength: 255,
-            }}
-            placeholder={'请输入您的单位'}
-            rules={[
-              {
-                required: true,
-                whitespace: true,
-                message: '请输入您的单位',
-              },
-            ]}
-          /> */}
           <ProFormText.Password
             name="password"
             fieldProps={{
@@ -229,14 +195,14 @@ const Register: React.FC<RegisterProps> = () => {
             fieldProps={{
               size: 'large',
               prefix: <SafetyCertificateOutlined />,
-              maxLength: 4,
+              maxLength: 6,
             }}
             captchaProps={{
               size: 'large',
               className: 'jd-btn--code',
             }}
-            phoneName="username"
-            name="code"
+            phoneName="email"
+            name="authCode"
             rules={[
               {
                 required: true,
