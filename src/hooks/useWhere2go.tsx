@@ -1,5 +1,33 @@
+import { FORGET_PAGE, LOGIN_PAGE, REGISTER_PAGE } from '@/constants';
 import { history } from 'umi';
 const useWhere2go = () => {
+
+    /**
+   * 跳转注册页面
+   */
+    const goRegister = () => {
+      history.push({
+        pathname: REGISTER_PAGE,
+      });
+    };
+  
+    /**
+     * 忘记密码
+     */
+    const goForget = () => {
+      history.push({
+        pathname: FORGET_PAGE,
+      });
+    };
+  
+    /**
+     * 登录
+     */
+    const goLogin = () => {
+      history.push({
+        pathname: LOGIN_PAGE,
+      });
+    };
   /**
    * 跳转集市板块
    * @param currentKey 板块key
@@ -20,6 +48,9 @@ const useWhere2go = () => {
     });
   };
   return {
+    goLogin,
+    goForget,
+    goRegister,
     goHome,
     goMarketDetail,
   };
