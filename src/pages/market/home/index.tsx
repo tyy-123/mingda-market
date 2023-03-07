@@ -4,7 +4,9 @@ import backgroundImg from '@/assets/images/market-background.png';
 import helpImg from '@/assets/images/market-module-help.png';
 import loveImg from '@/assets/images/market-module-love.png';
 import factsImg from '@/assets/images/market-module-facts.png';
-import addImg from '@/assets/images/home-add.png';
+import teacherImg from '@/assets/images/market-module-teacher.png';
+import workImg from '@/assets/images/market-module-work.png';
+
 import { Image, FloatButton } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 import './index.less';
@@ -36,6 +38,16 @@ const Index = () => {
       key: 'interestFacts',
       icon: factsImg,
       label: '瓜田趣事',
+    },
+    {
+      key: 'teacherMsgs',
+      icon: teacherImg,
+      label: '兼职信息',
+    },
+    {
+      key: 'schoolWork',
+      icon: workImg,
+      label: '校园招聘',
     },
   ];
   return (
