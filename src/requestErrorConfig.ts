@@ -34,7 +34,7 @@ export const errorConfig: RequestConfig = {
           resData.ActionStatus === 'OK',
         errorMessage:
         resData.title ||
-          // resData.message ||
+          resData.msg ||
           // resData.ErrorInfo ||
           // resData.error_description ||
           '未知错误',
