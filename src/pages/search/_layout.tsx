@@ -9,6 +9,6 @@ function _Layout({ children }: IRouteComponentProps) {
   );
 }
 
-// _Layout.wrappers = ['@/wrappers/auth'];
+_Layout.wrappers = ['@/wrappers/auth'];
 
 export default _Layout;

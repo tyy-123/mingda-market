@@ -17,6 +17,18 @@ const user={
       method: 'GET',
     },
   },
+  getUserInfo_id_get:{
+    url:'getUserInfo',
+    options: {
+      method: 'GET',
+    },
+  },
+  getLoginUser_get:{
+    url:'getLoginUser',
+    options: {
+      method: 'GET',
+    },
+  },
 
 }
 export { user };
