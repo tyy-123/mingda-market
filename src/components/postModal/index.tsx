@@ -11,7 +11,14 @@ const PostModal: React.FC<PostModalProps> = ({
   onCancel,
   ...rest
 }) => {
-  const columnTypes = ['二手闲置', '打听求助', '恋爱交友', '瓜田趣事'];
+  const columnTypes = [
+    '二手闲置',
+    '打听求助',
+    '恋爱交友',
+    '瓜田趣事',
+    '兼职信息',
+    '校园招聘',
+  ];
   return (
     <Modal
       width={300}
