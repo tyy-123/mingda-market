@@ -32,6 +32,8 @@ const Login: React.FC = () => {
 
   const loginAjax = jdMixAjax(user.login_get);
 
+  const { goRegister } = useWhere2go();
+
   const handleLogin = async (values: any) => {
     console.log(values);
     const res = await loginAjax.run({
@@ -152,20 +154,16 @@ const Login: React.FC = () => {
           </div>
         </LoginForm>
         <div className="login-register-forget">
-          <Button
-            type="link"
-            className="jd-link--blue"
-            //  onClick={goRegister}
-          >
+          <Button type="link" className="jd-link--blue" onClick={goRegister}>
             {langContext.lang.login.register}
           </Button>
-          <Button
+          {/* <Button
             type="link"
             className="jd-link--blue"
             //  onClick={goForget}
           >
             {langContext.lang.login.forget}
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
