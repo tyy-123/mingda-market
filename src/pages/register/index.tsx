@@ -123,7 +123,7 @@ const Register: React.FC<RegisterProps> = () => {
                   className="jd-btn--register"
                   key="submit"
                   onClick={() => props.form?.submit?.()}
-                  // loading={registerAjax.loading || isJumping}
+                  loading={registerAjax.loading || isJumping}
                 >
                   {isJumping ? '正在自动登录..' : '注册'}
                 </Button>,
