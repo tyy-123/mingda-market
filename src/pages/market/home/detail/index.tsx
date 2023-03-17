@@ -48,6 +48,16 @@ const Index: React.FC = () => {
       label: `瓜田趣事`,
       children: <div>瓜田趣事</div>,
     },
+    {
+      key: 'teacherMsgs',
+      label: `兼职信息`,
+      children: <div>兼职信息</div>,
+    },
+    {
+      key: 'schoolWork',
+      label: `校园招聘`,
+      children: <div>校园招聘</div>,
+    },
   ];
 
   const onChange = (key: string) => {
