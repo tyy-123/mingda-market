@@ -1,5 +1,5 @@
 ﻿import { history, RequestConfig } from 'umi';
-import { getToken, getUrlToken } from './common/utils';
+import { getToken, getUrlToken, setToken } from './common/utils';
 
 // 请求前缀
 export const URL_PREFIX = '/api';
@@ -33,7 +33,7 @@ export const errorConfig: RequestConfig = {
           resData.ErrorCode === 0 ||
           resData.ActionStatus === 'OK',
         errorMessage:
-        resData.title ||
+          resData.title ||
           resData.msg ||
           // resData.ErrorInfo ||
           // resData.error_description ||
@@ -56,7 +56,10 @@ export const errorConfig: RequestConfig = {
       };
       const urlToken = getUrlToken();
       const token = (urlToken ? 'Bearer ' + urlToken : null) || getToken();
-      if (token) headers['accessToken'] = token;
+      if (token) {
+        headers['accessToken'] = token;
+        setToken(token)
+      }
 
       return {
         url: `${URL_PREFIX}${url}`,
