@@ -1,5 +1,5 @@
 import { history } from 'umi';
-export const TOKEN = 'jstu.token';
+export const TOKEN = 'tyy.token';
 
 export const setToken = (token: string) => {
   localStorage.setItem(TOKEN, token);
