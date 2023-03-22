@@ -57,8 +57,8 @@ export const errorConfig: RequestConfig = {
       const urlToken = getUrlToken();
       const token = (urlToken ? 'Bearer ' + urlToken : null) || getToken();
       if (token) {
-        headers['accessToken'] = token;
-        setToken(token)
+        headers['authorization'] = token;
+        setToken(token);
       }
 
       return {

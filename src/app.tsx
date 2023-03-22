@@ -1,21 +1,21 @@
 import { history } from 'umi';
 import { FORGET_PAGE, LOGIN_PAGE, REGISTER_PAGE } from './constants';
 import { errorConfig } from './requestErrorConfig';
-import {  jdAjax } from './services';
+import { apiUser, jdAjax } from './services';
 
 export const request = {
   ...errorConfig,
 };
 
 export async function getInitialState() {
-  let user = null;
+  let result = null;
   const whiteList = [REGISTER_PAGE, LOGIN_PAGE, FORGET_PAGE];
   if (!whiteList.includes(history.location.pathname)) {
-    // user = await jdAjax({}, apiUser.info_get);
+    result = await jdAjax({}, apiUser.getLoginUser_get);
   }
 
   return {
-    user,
+    user: result.data,
     // globalConfig: window.staticConfig,
   };
 }

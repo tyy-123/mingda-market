@@ -1,5 +1,5 @@
 import { LangContext } from '@/context';
-import { user, jdMixAjax } from '@/services';
+import { apiUser, jdMixAjax } from '@/services';
 import {
   CaptFieldRef,
   LoginForm,
@@ -24,13 +24,13 @@ import './index.less';
 // import useUser from '@/hooks/useUser';
 // import { UserType } from '@/constants';
 
-const cls = classNames('jd__login-page');
+const cls = classNames('md__login-page');
 const Login: React.FC = () => {
   const captchaRef = useRef<CaptFieldRef | null | undefined>();
   const langContext: any = useContext(LangContext);
   const [loginForm] = Form.useForm();
 
-  const loginAjax = jdMixAjax(user.login_get);
+  const loginAjax = jdMixAjax(apiUser.login_get);
 
   const { goRegister } = useWhere2go();
 

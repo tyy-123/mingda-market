@@ -1,4 +1,4 @@
-const user={
+const apiUser={
   getCode_get:{
     url: '/getCode',
     options: {
@@ -18,17 +18,17 @@ const user={
     },
   },
   getUserInfo_id_get:{
-    url:'getUserInfo',
+    url:'/getUserInfo',
     options: {
       method: 'GET',
     },
   },
   getLoginUser_get:{
-    url:'getLoginUser',
+    url:'/getLoginUser',
     options: {
       method: 'GET',
     },
   },
 
 }
-export { user };
+export { apiUser };

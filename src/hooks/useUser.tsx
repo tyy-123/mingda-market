@@ -1,4 +1,4 @@
-import { user, jdAjax, jdMixAjax, MixSN } from '@/services';
+import { apiUser, jdAjax, jdMixAjax, MixSN } from '@/services';
 import { useCallback, useEffect, useState } from 'react';
 import { useModel } from 'umi';
 
@@ -9,15 +9,15 @@ const useUser = (userId?: MixSN) => {
   const [username, setUsername] = useState('');
   const [org, setOrg] = useState('');
 
-  const getUserAjax = jdMixAjax(user.getUserInfo_id_get);
+  const getUserAjax = jdMixAjax(apiUser.getUserInfo_id_get);
 
   const refreshUser = async () => {
-    const currentUser = await jdAjax({}, user.getLoginUser_get);
+    const currentUser = await jdAjax({}, apiUser.getLoginUser_get);
     setInitialState({
       ...initialState!,
       user: currentUser,
     });
-    return user;
+    return apiUser;
   };
 
   // /**
