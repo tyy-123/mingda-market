@@ -16,7 +16,7 @@ import {
 } from '@ant-design/icons';
 import { Button, message } from 'antd';
 import useWhere2go from '@/hooks/useWhere2go';
-import { user, jdAjax, jdMixAjax } from '@/services';
+import { apiUser, jdAjax, jdMixAjax } from '@/services';
 import { REX_NAME, REX_PHONE, REX_PWD, setToken } from '@/common/utils';
 // import useUser from '@/hooks/useUser';
 import { useBoolean } from 'ahooks';
@@ -44,7 +44,7 @@ const Register: React.FC<RegisterProps> = () => {
   // const { refreshUser, isAccountExist } = useUser();
   const [isJumping, { setTrue, setFalse }] = useBoolean(false);
 
-  const registerAjax = jdMixAjax(user.register_post);
+  const registerAjax = jdMixAjax(apiUser.register_post);
 
   /**
    * 验证账号
@@ -63,7 +63,7 @@ const Register: React.FC<RegisterProps> = () => {
   const handleGetCode = async (email: string) => {
     console.log(email);
     try {
-      let res = await jdAjax({ params: { email } }, user.getCode_get);
+      let res = await jdAjax({ params: { email } }, apiUser.getCode_get);
       console.log(res);
       if (res.code === 200)
         message.success(`已向 ${email} 发送验证码，请注意查收`);

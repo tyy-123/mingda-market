@@ -13,10 +13,13 @@ import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
 import { useModal } from '@/hooks/useModal';
 import PostModal from '@/components/postModal';
+import { useEffect } from 'react';
+import { apiNote, jdMixAjax } from '@/services';
 const Index = () => {
   const { goMarketDetail } = useWhere2go();
   //发布帖子Modal
   const postFormModal = useModal({});
+  const getNoteListAjax = jdMixAjax(apiNote.getNoteList_get);
 
   const marketModuleItems = [
     {
@@ -50,6 +53,15 @@ const Index = () => {
       label: '校园招聘',
     },
   ];
+
+  const init = async () => {
+    const result = await getNoteListAjax.run({});
+    console.log(result);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
   return (
     <div className="md__market-home">
       <header className="home-header">

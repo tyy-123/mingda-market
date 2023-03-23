@@ -12,12 +12,12 @@ const useUser = (userId?: MixSN) => {
   const getUserAjax = jdMixAjax(apiUser.getUserInfo_id_get);
 
   const refreshUser = async () => {
-    const currentUser = await jdAjax({}, apiUser.getLoginUser_get);
+    const user = await jdAjax({}, apiUser.getLoginUser_get);
     setInitialState({
       ...initialState!,
-      user: currentUser,
+      user,
     });
-    return apiUser;
+    return user;
   };
 
   // /**

@@ -8,14 +8,16 @@ export const request = {
 };
 
 export async function getInitialState() {
-  let result = null;
+  let user = null;
   const whiteList = [REGISTER_PAGE, LOGIN_PAGE, FORGET_PAGE];
+  console.log(history.location.pathname);
+  
   if (!whiteList.includes(history.location.pathname)) {
-    result = await jdAjax({}, apiUser.getLoginUser_get);
+    user = await jdAjax({}, apiUser.getLoginUser_get);
   }
 
   return {
-    user: result.data,
+    user,
     // globalConfig: window.staticConfig,
   };
 }

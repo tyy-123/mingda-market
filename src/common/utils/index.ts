@@ -65,7 +65,7 @@ export const download = (url: string, data: Array<number>, name = '') => {
     body: JSON.stringify(data),
     headers: new Headers({
       'Content-Type': 'application/json',
-      accessToken: token ? token : '',
+      authorization: token ? token : '',
     }),
   })
     .then((response) => {
