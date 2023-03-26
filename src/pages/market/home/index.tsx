@@ -13,13 +13,17 @@ import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
 import { useModal } from '@/hooks/useModal';
 import PostModal from '@/components/postModal';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { apiNote, jdMixAjax } from '@/services';
+import { NoteMsg } from '@/interface';
+import NoteShow from '@/components/noteShow';
 const Index = () => {
   const { goMarketDetail } = useWhere2go();
   //发布帖子Modal
   const postFormModal = useModal({});
   const getNoteListAjax = jdMixAjax(apiNote.getNoteList_get);
+
+  const [notes, setNotes] = useState<NoteMsg[]>();
 
   const marketModuleItems = [
     {
@@ -55,8 +59,10 @@ const Index = () => {
   ];
 
   const init = async () => {
-    const result = await getNoteListAjax.run({});
-    console.log(result);
+    //获取所有帖子
+    const res = await getNoteListAjax.run({});
+    console.log(res);
+    setNotes(res);
   };
 
   useEffect(() => {
@@ -81,7 +87,12 @@ const Index = () => {
           </div>
         ))}
       </section>
-      <main className="market-post">帖子列表</main>
+      <main className="market-post">
+        帖子列表
+        {notes?.map((item) => (
+          <NoteShow noteMSg={item} />
+        ))}
+      </main>
       <Footer />
       <FloatButton
         icon={<PlusCircleFilled style={{ color: '#43ba9d' }} />}
