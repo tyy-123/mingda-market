@@ -6,12 +6,12 @@ import { useModel } from 'umi';
 
 const cls = classNames('md__personal-page');
 
-export type userType={
-  account:string;
-  password:string;
-  avatar:string;
-  username:string;
-}
+export type userType = {
+  account: string;
+  password: string;
+  avatar: string;
+  username: string;
+};
 
 const Index = () => {
   const getLoginUserAjax = jdMixAjax(apiUser.getLoginUser_get);
