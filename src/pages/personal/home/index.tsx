@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { Avatar } from 'antd';
 import classNames from 'classnames';
 import { useModel } from 'umi';
+import { getToken } from '@/common/utils';
+import './index.less';
 
 const cls = classNames('md__personal-page');
 
@@ -19,6 +21,8 @@ const Index = () => {
 
   const [userInfo, setUerInfo] = useState();
 
+  const personCenterItems = ['个人资料', '我的帖子', '账号设置'];
+
   //初始化个人信息
   const init = async () => {
     const res = await getLoginUserAjax.run({});
@@ -28,14 +32,25 @@ const Index = () => {
   };
 
   useEffect(() => {
-    init();
-  }, []);
+    if (getToken()) {
+      init();
+    }
+  }, [getToken()]);
   return (
     <div className={cls}>
       <div className="personal-msg">
         <Avatar size={64} src={initialState?.user.avatar} />
         <div>{initialState?.user.username}</div>
       </div>
+      <div className="personal-center">
+        {personCenterItems.map((item) => (
+          <div className="center-item">
+            {`${item}`}
+            <span className="center-more">{`>`}</span>
+          </div>
+        ))}
+      </div>
+      <div className="person footer">民大集市-无聊就来看看</div>
     </div>
   );
 };
