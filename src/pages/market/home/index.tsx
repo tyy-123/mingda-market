@@ -22,6 +22,7 @@ const Index = () => {
   //发布帖子Modal
   const postFormModal = useModal({});
   const getNoteListAjax = jdMixAjax(apiNote.getNoteList_get);
+  const getNoteListByPageAjax = jdMixAjax(apiNote.getNoteListPage_get);
 
   const [notes, setNotes] = useState<NoteMsg[]>();
 
@@ -61,7 +62,15 @@ const Index = () => {
   const init = async () => {
     //获取所有帖子
     const res = await getNoteListAjax.run({});
+    const res1 = await getNoteListByPageAjax.run({
+      params: {
+        current: 1,
+        page: 5,
+        modelId:0
+      },
+    });
     console.log(res);
+    console.log(res1);
     setNotes(res);
   };
 

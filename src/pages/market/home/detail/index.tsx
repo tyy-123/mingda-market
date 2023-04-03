@@ -10,6 +10,8 @@ import './index.less';
 import { useEffect } from 'react';
 import { useModal } from '@/hooks/useModal';
 import PostModal from '@/components/postModal';
+import useNote from '@/hooks/useNote';
+import NoteShow from '@/components/noteShow';
 
 const Index: React.FC = () => {
   const [state, setState] = useUrlState();
@@ -19,6 +21,15 @@ const Index: React.FC = () => {
   );
 
   const { goHome } = useWhere2go();
+  const {
+    allNotes,
+    schoolWorkNotes,
+    teacherMsgsNotes,
+    interestFactsNotes,
+    loveMakeFriendsNotes,
+    askFoeHelpNotes,
+    usedIdleNotes,
+  } = useNote();
 
   const postFormModal = useModal({});
 
@@ -26,37 +37,67 @@ const Index: React.FC = () => {
     {
       key: 'all',
       label: `全部`,
-      children: <div>全部</div>,
+      children: <div>
+      {allNotes?.map((item) => (
+        <NoteShow noteMSg={item} />
+      ))}
+    </div>,
     },
     {
       key: 'usedIdle',
       label: `二手闲置`,
-      children: <div>二手闲置</div>,
+      children: (
+        <div>
+          {usedIdleNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
     {
       key: 'askForHelp',
       label: `打听求助`,
-      children: <div>打听求助</div>,
+      children: <div>
+      {askFoeHelpNotes?.map((item) => (
+        <NoteShow noteMSg={item} />
+      ))}
+    </div>,
     },
     {
       key: 'loveMakeFriends',
       label: `恋爱交友`,
-      children: <div>恋爱交友</div>,
+      children: <div>
+      {loveMakeFriendsNotes?.map((item) => (
+        <NoteShow noteMSg={item} />
+      ))}
+    </div>,
     },
     {
       key: 'interestFacts',
       label: `瓜田趣事`,
-      children: <div>瓜田趣事</div>,
+      children: <div>
+      {interestFactsNotes?.map((item) => (
+        <NoteShow noteMSg={item} />
+      ))}
+    </div>,
     },
     {
       key: 'teacherMsgs',
       label: `兼职信息`,
-      children: <div>兼职信息</div>,
+      children: <div>
+      {teacherMsgsNotes?.map((item) => (
+        <NoteShow noteMSg={item} />
+      ))}
+    </div>,
     },
     {
       key: 'schoolWork',
       label: `校园招聘`,
-      children: <div>校园招聘</div>,
+      children: <div>
+      {schoolWorkNotes?.map((item) => (
+        <NoteShow noteMSg={item} />
+      ))}
+    </div>,
     },
   ];
 

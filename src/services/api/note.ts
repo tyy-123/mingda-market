@@ -5,5 +5,11 @@ const apiNote = {
       method: 'GET',
     },
   },
+  getNoteListPage_get:{
+    url: '/getNoteListByPage',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiNote };
