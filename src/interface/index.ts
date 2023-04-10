@@ -12,7 +12,7 @@ export interface NoteMsg {
   avatar: string;
   commentCount: number;
   content: string;
-  imgs: string;
+  imgs: Array<string>;
   modelId: number;
   noteId: number;
   releaseTime: string;
