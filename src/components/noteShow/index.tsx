@@ -1,5 +1,5 @@
 import { BaseComponentProps, ModelType, NoteMsg } from '@/interface';
-import { Avatar, Button, Upload, message } from 'antd';
+import { Avatar, Button, Upload, message, Image } from 'antd';
 import './index.less';
 
 export interface NoteShowProps extends BaseComponentProps {
@@ -25,7 +25,7 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
     modelId,
   } = noteMSg;
 
-  console.log(noteMSg);
+  console.log(imgs);
 
   return (
     <div className="md__note-show">
@@ -37,6 +37,16 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
         <span className="header-right">{commentCount}条评论</span>
       </header>
       <main className="note-content">{content}</main>
+      <div className="img-list">
+        {imgs.map(
+          (src: string) =>
+            src && (
+              <div className="img-div">
+                <img src={src}></img>
+              </div>
+            ),
+        )}
+      </div>
       <footer className="note-footer">
         <Button type="link">#{ModelTypeMap.get(modelId)}#</Button>
       </footer>
