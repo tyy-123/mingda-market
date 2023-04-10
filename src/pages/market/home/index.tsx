@@ -66,11 +66,11 @@ const Index = () => {
       params: {
         current: 1,
         page: 5,
-        modelId:0
+        modelId: 0,
       },
     });
-    console.log(res);
-    console.log(res1);
+    // console.log(res);
+    // console.log(res1);
     setNotes(res);
   };
 
