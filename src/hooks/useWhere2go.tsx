@@ -58,13 +58,34 @@ const useWhere2go = () => {
       },
     });
   };
+
+  /**
+   * 跳转到帖子详情页面
+   * @param noteId 帖子Id
+   */
+  const goNoteDetail = (noteId: any) => {
+    history.push({
+      pathname: '/market/home/detail/noteDetail',
+      query: {
+        noteId,
+      },
+    });
+  };
+  /**
+   * 返回
+   */
+  const goBack = () => {
+    history.goBack();
+  };
   return {
+    goBack,
     goLogin,
     goForget,
     goRegister,
     goPostNote,
     goHome,
     goMarketDetail,
+    goNoteDetail,
   };
 };
 
