@@ -13,6 +13,8 @@ const useNote = () => {
       requestType: 'form',
     },
   });
+  const getNoteMsgByIdAjax = jdMixAjax(apiNote.getNoteMsgById_get);
+
   const [allNotes, setAllNotes] = useState<NoteMsg[]>();
   const [usedIdleNotes, setUsedIdleNotes] = useState<NoteMsg[]>();
   const [askFoeHelpNotes, setAskFoeHelpNotes] = useState<NoteMsg[]>();
@@ -65,6 +67,16 @@ const useNote = () => {
     });
     return imgUrl;
   };
+
+  const getNoteMsgById = async (noteId: number) => {
+    const noteMsg = await getNoteMsgByIdAjax.run({
+      params: {
+        noteId,
+      },
+    });
+    console.log(noteMsg);
+    return noteMsg;
+  };
   useEffect(() => {
     init();
   }, []);
@@ -72,6 +84,7 @@ const useNote = () => {
     getModelNotes,
     allNotes,
     getImgUrlUploadImage,
+    getNoteMsgById,
     schoolWorkNotes,
     teacherMsgsNotes,
     interestFactsNotes,
