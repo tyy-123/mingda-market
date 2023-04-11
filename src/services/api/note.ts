@@ -29,5 +29,11 @@ const apiNote = {
       },
     },
   },
+  getNoteMsgById_get: {
+    url: '/getNoteMsgById',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiNote };
