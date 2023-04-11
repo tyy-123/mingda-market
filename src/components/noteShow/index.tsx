@@ -1,6 +1,7 @@
 import { BaseComponentProps, ModelType, NoteMsg } from '@/interface';
 import { Avatar, Button, Upload, message, Image } from 'antd';
 import './index.less';
+import useWhere2go from '@/hooks/useWhere2go';
 
 export interface NoteShowProps extends BaseComponentProps {
   noteMSg: NoteMsg;
@@ -16,6 +17,7 @@ export const ModelTypeMap = new Map([
 
 const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
   const {
+    noteId,
     avatar,
     commentCount,
     content,
@@ -25,10 +27,15 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
     modelId,
   } = noteMSg;
 
-  console.log(imgs);
+  const { goNoteDetail } = useWhere2go();
 
   return (
-    <div className="md__note-show">
+    <div
+      className="md__note-show"
+      onClick={() => {
+        goNoteDetail(noteId);
+      }}
+    >
       <header className="note-header">
         <span className="header-left">
           <Avatar src={avatar} />
