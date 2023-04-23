@@ -21,6 +21,7 @@ import useWhere2go from '@/hooks/useWhere2go';
 import { setToken } from '@/common/utils';
 import { history } from 'umi';
 import './index.less';
+import useUser from '@/hooks/useUser';
 // import useUser from '@/hooks/useUser';
 // import { UserType } from '@/constants';
 
@@ -33,6 +34,7 @@ const Login: React.FC = () => {
   const loginAjax = jdMixAjax(apiUser.login_get);
 
   const { goRegister } = useWhere2go();
+  const { refreshUser } = useUser();
 
   const handleLogin = async (values: any) => {
     console.log(values);
@@ -44,7 +46,7 @@ const Login: React.FC = () => {
     if (res) {
       setToken(res.token);
       setTimeout(async () => {
-        // const user = await refreshUser();
+        const user = await refreshUser();
         message.success('登录成功');
 
         // const type = user && user.type;

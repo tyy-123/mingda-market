@@ -30,6 +30,10 @@ const Index: React.FC = () => {
   const { goHome } = useWhere2go();
   const { getImgUrlUploadImage } = useNote();
 
+  /**
+   * 发布帖子
+   * @param values 帖子内容
+   */
   const onFinish = async (values: any) => {
     console.log('Success:', values);
     const { content } = values;

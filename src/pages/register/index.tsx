@@ -21,6 +21,7 @@ import { REX_NAME, REX_PHONE, REX_PWD, setToken } from '@/common/utils';
 // import useUser from '@/hooks/useUser';
 import { useBoolean } from 'ahooks';
 import './index.less';
+import useUser from '@/hooks/useUser';
 
 export interface RegisterProps {}
 
@@ -43,6 +44,8 @@ const Register: React.FC<RegisterProps> = () => {
   const { goLogin, goHome } = useWhere2go();
   // const { refreshUser, isAccountExist } = useUser();
   const [isJumping, { setTrue, setFalse }] = useBoolean(false);
+  const { refreshUser } = useUser();
+
 
   const registerAjax = jdMixAjax(apiUser.register_post);
 
@@ -89,7 +92,7 @@ const Register: React.FC<RegisterProps> = () => {
         setTrue();
         setTimeout(async () => {
           message.success('注册成功');
-          // await refreshUser();
+          await refreshUser();
           setTimeout(() => {
             setFalse();
             goHome();

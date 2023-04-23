@@ -15,6 +15,7 @@ export const ModelTypeMap = new Map([
   [ModelType.SCHOOLWORK, '校园招聘'],
 ]);
 
+
 const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
   const {
     noteId,
@@ -23,29 +24,30 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
     content,
     imgs,
     releaseTime,
+    userId,
     username,
     modelId,
   } = noteMSg;
 
-  const { goNoteDetail } = useWhere2go();
+  const { goNoteDetail ,goMsgDetail} = useWhere2go();
 
   return (
     <div
       className="md__note-show"
-      onClick={() => {
-        goNoteDetail(noteId);
-      }}
+      // onClick={() => {
+      //   goNoteDetail(noteId);
+      // }}
     >
       <header className="note-header">
         <span className="header-left">
-          <Avatar src={avatar} />
+          <Avatar src={avatar} onClick={()=>{goMsgDetail(userId)}} />
           <span className="user-name">{username}</span>
         </span>
         <span className="header-right">{commentCount}条评论</span>
       </header>
       <main className="note-content">{content}</main>
       <div className="img-list">
-        {imgs.map(
+        {imgs?.map(
           (src: string) =>
             src && (
               <div className="img-div">

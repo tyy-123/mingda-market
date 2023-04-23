@@ -18,6 +18,8 @@ export type userType = {
 const Index = () => {
   const getLoginUserAjax = jdMixAjax(apiUser.getLoginUser_get);
   const { setInitialState, initialState } = useModel('@@initialState');
+  const [avatar, setAvatar] = useState('');
+  const [username, setUsername] = useState('');
 
   const [userInfo, setUerInfo] = useState();
 
@@ -28,6 +30,8 @@ const Index = () => {
     const res = await getLoginUserAjax.run({});
     console.log(res);
     setUerInfo(res);
+    setAvatar(res.avatar);
+    setUsername(res.username)
     console.log(initialState?.user);
   };
 
@@ -36,10 +40,11 @@ const Index = () => {
       init();
     }
   }, [getToken()]);
+
   return (
     <div className={cls}>
       <div className="personal-msg">
-        <Avatar size={64} src={initialState?.user.avatar} />
+        <Avatar size={64} src={avatar} />
         <div>{initialState?.user.username}</div>
       </div>
       <div className="personal-center">

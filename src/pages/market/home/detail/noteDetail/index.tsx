@@ -7,17 +7,28 @@ import { Input } from 'antd';
 import useWhere2go from '@/hooks/useWhere2go';
 import { HomeOutlined, MessageOutlined } from '@ant-design/icons';
 import './index.less';
+import { apiComment, jdMixAjax } from '@/services';
+import CommentShow from '@/components/commentShow';
 
 const Index: React.FC = () => {
   const [state, setState] = useUrlState();
   const { getNoteMsgById } = useNote();
   const [noteMsg, setNoteMsg] = useState<any>();
+  const [commentList, setCommentList] = useState<any>();
+  const getCommentListAjax = jdMixAjax(apiComment.getCommentList_get);
 
   const { goBack } = useWhere2go();
 
   const init = async (noteId: number) => {
     const noteMsg = await getNoteMsgById(noteId);
     setNoteMsg(noteMsg);
+    const commentList = await getCommentListAjax.run({
+      params: {
+        noteId,
+      },
+    });
+    console.log(commentList);
+    setCommentList(commentList);
   };
 
   useEffect(() => {
@@ -29,7 +40,11 @@ const Index: React.FC = () => {
     <div className="md__noteDetail-page">
       <div className="note-detail-header" onClick={goBack}>{`< 返回`}</div>
       {noteMsg && <NoteShow noteMSg={noteMsg} />}
-      <div className="note-comment">一条又一条的评论区</div>
+      <div className="note-comment">
+        {commentList?.map((comment: any) => (
+          <CommentShow comment={comment} />
+        ))}
+      </div>
       <div className="note-publish-comment">
         <div className="go-home-left">
           <HomeOutlined style={{ color: '#aeaeae' }} />

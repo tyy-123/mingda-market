@@ -71,6 +71,16 @@ const useWhere2go = () => {
       },
     });
   };
+
+  /**
+   * 跳转到消息聊天界面
+   * @param userId 当前用户Id
+   */
+  const goMsgDetail = (userId: any) => {
+    history.push({
+      pathname: `/message/${userId}/detail`,
+    });
+  };
   /**
    * 返回
    */
@@ -83,6 +93,7 @@ const useWhere2go = () => {
     goForget,
     goRegister,
     goPostNote,
+    goMsgDetail,
     goHome,
     goMarketDetail,
     goNoteDetail,

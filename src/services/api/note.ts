@@ -35,5 +35,11 @@ const apiNote = {
       method: 'GET',
     },
   },
+  getQueryNote_get: {
+    url: '/queryNote',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiNote };

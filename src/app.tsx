@@ -2,6 +2,7 @@ import { history } from 'umi';
 import { FORGET_PAGE, LOGIN_PAGE, REGISTER_PAGE } from './constants';
 import { errorConfig } from './requestErrorConfig';
 import { apiUser, jdAjax } from './services';
+import { getToken } from './common/utils';
 
 export const request = {
   ...errorConfig,
@@ -11,13 +12,13 @@ export async function getInitialState() {
   let result = null;
   const whiteList = [REGISTER_PAGE, LOGIN_PAGE, FORGET_PAGE];
   console.log(history.location.pathname);
-  
+
   if (!whiteList.includes(history.location.pathname)) {
-    result = await jdAjax({}, apiUser.getLoginUser_get);
+    if (getToken()) result = await jdAjax({}, apiUser.getLoginUser_get);
   }
 
   return {
-    user:result.data,
+    user: result.data,
     // globalConfig: window.staticConfig,
   };
 }
