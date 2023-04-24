@@ -1,0 +1,70 @@
+.md--message-detail {
+  header.message-detail {
+    position: relative;
+    color: black;
+    height:60px;
+    background: #fdfafa;
+    line-height: 60px;
+    font-size: 18px;
+    span.left-back {
+      margin-left: 10px;
+    }
+    .chat-title {
+      position: absolute;
+      left: 50%;
+    }
+  }
+  .chat-list {
+    .chat-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    .other {
+      justify-content: flex-start !important;
+      .chat-content {
+        background-color: #d2d8d4  !important;
+      }
+    }
+    .chat-content {
+      height: 40px;
+      color: #fff;
+      line-height: 40px;
+      border: 1px #d9d9d9 solid;
+      background-color: #5297ff;
+      width: 50%;
+      border-radius: 20px;
+      padding-left: 10px;
+    }
+  }
+  .note-publish-comment {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #fdfafa;
+    .go-home-left {
+      color: #aeaeae;
+      font-size: 12px;
+      span.anticon.anticon-home {
+        font-size: 24px;
+      }
+    }
+    input.ant-input.css-dev-only-do-not-override-10ed4xt {
+      border-radius: 20px;
+      width: 60%;
+      height: 40px;
+    }
+    .go-home-right {
+      color: #aeaeae;
+      font-size: 12px;
+      span.anticon.anticon-message {
+        font-size: 24px;
+      }
+    }
+  }
+}

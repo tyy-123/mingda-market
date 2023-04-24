@@ -5,5 +5,11 @@ const apiComment = {
       method: 'GET',
     },
   },
+  getChildCommentList_get: {
+    url: '/getChildCommentList',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiComment };

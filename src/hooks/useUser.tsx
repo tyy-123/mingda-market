@@ -5,7 +5,7 @@ import { useModel } from 'umi';
 const useUser = (userId?: MixSN) => {
   const { setInitialState, initialState } = useModel('@@initialState');
 
-  const [name, setName] = useState('');
+  const [avatar, setAvatar] = useState('');
   const [username, setUsername] = useState('');
   const [org, setOrg] = useState('');
 
@@ -35,13 +35,13 @@ const useUser = (userId?: MixSN) => {
 
   /**
    * 通过用户Id查询用户信息
-   * @param id 用户id
+   * @param userId 用户id
    */
-  const getUserInfoById = async (id: MixSN) => {
+  const getUserInfoById = async (userId: MixSN) => {
     try {
       const res = await getUserAjax.run({
-        path: {
-          id,
+        params: {
+          userId,
         },
       });
       return res;
@@ -54,19 +54,20 @@ const useUser = (userId?: MixSN) => {
     if (!userId) return;
     const res = await getUserInfoById(userId);
     if (res) {
-      setName(res.name);
+      console.log(res);
+      setAvatar(res.avatar);
       setUsername(res.username);
       setOrg(res.org);
     }
   }, [userId]);
 
   useEffect(() => {
-    init();
+    if (userId) init();
   }, [userId]);
 
   return {
-    //用户姓名
-    name,
+    //用户头像
+    avatar,
     //用户账号/邮箱
     username,
     //用户系所/单位

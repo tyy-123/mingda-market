@@ -40,7 +40,13 @@ const Index: React.FC = () => {
     <div className="md__noteDetail-page">
       <div className="note-detail-header" onClick={goBack}>{`< 返回`}</div>
       {noteMsg && <NoteShow noteMSg={noteMsg} />}
+      <footer className='noter-footer'>
+        <span className='footer-right'><MessageOutlined />评论帖子</span>
+      </footer>
       <div className="note-comment">
+        <header className='comment-header-top'>
+          评论留言
+        </header>
         {commentList?.map((comment: any) => (
           <CommentShow comment={comment} />
         ))}

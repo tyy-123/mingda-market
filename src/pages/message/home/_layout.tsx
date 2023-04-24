@@ -4,6 +4,7 @@ function _Layout({ children }: IRouteComponentProps) {
   return (
     <>
       {children}
+      <Footer/>
     </>
   );
 }

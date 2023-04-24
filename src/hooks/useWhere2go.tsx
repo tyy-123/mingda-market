@@ -78,7 +78,7 @@ const useWhere2go = () => {
    */
   const goMsgDetail = (userId: any) => {
     history.push({
-      pathname: `/message/${userId}/detail`,
+      pathname: `/message/detail/${userId}/detail`,
     });
   };
   /**

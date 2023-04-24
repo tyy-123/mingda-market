@@ -37,17 +37,19 @@ const Index: React.FC = () => {
     {
       key: 'all',
       label: `全部`,
-      children: <div>
-      {allNotes?.map((item) => (
-        <NoteShow noteMSg={item} />
-      ))}
-    </div>,
+      children: (
+        <div className="tab-note-list">
+          {allNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
     {
       key: 'usedIdle',
       label: `二手闲置`,
       children: (
-        <div>
+        <div className="tab-note-list">
           {usedIdleNotes?.map((item) => (
             <NoteShow noteMSg={item} />
           ))}
@@ -57,47 +59,57 @@ const Index: React.FC = () => {
     {
       key: 'askForHelp',
       label: `打听求助`,
-      children: <div>
-      {askFoeHelpNotes?.map((item) => (
-        <NoteShow noteMSg={item} />
-      ))}
-    </div>,
+      children: (
+        <div className="tab-note-list">
+          {askFoeHelpNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
     {
       key: 'loveMakeFriends',
       label: `恋爱交友`,
-      children: <div>
-      {loveMakeFriendsNotes?.map((item) => (
-        <NoteShow noteMSg={item} />
-      ))}
-    </div>,
+      children: (
+        <div className="tab-note-list">
+          {loveMakeFriendsNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
     {
       key: 'interestFacts',
       label: `瓜田趣事`,
-      children: <div>
-      {interestFactsNotes?.map((item) => (
-        <NoteShow noteMSg={item} />
-      ))}
-    </div>,
+      children: (
+        <div className="tab-note-list">
+          {interestFactsNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
     {
       key: 'teacherMsgs',
       label: `兼职信息`,
-      children: <div>
-      {teacherMsgsNotes?.map((item) => (
-        <NoteShow noteMSg={item} />
-      ))}
-    </div>,
+      children: (
+        <div className="tab-note-list">
+          {teacherMsgsNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
     {
       key: 'schoolWork',
       label: `校园招聘`,
-      children: <div>
-      {schoolWorkNotes?.map((item) => (
-        <NoteShow noteMSg={item} />
-      ))}
-    </div>,
+      children: (
+        <div className="tab-note-list">
+          {schoolWorkNotes?.map((item) => (
+            <NoteShow noteMSg={item} />
+          ))}
+        </div>
+      ),
     },
   ];
 
