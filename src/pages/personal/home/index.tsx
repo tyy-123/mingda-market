@@ -31,8 +31,12 @@ const Index = () => {
     console.log(res);
     setUerInfo(res);
     setAvatar(res.avatar);
-    setUsername(res.username)
+    setUsername(res.username);
     console.log(initialState?.user);
+    setInitialState({
+      ...initialState!,
+      user:res,
+    });
   };
 
   useEffect(() => {
@@ -45,7 +49,7 @@ const Index = () => {
     <div className={cls}>
       <div className="personal-msg">
         <Avatar size={64} src={avatar} />
-        <div>{initialState?.user.username}</div>
+        <div>{username}</div>
       </div>
       <div className="personal-center">
         {personCenterItems.map((item) => (

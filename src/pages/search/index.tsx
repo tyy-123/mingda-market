@@ -18,7 +18,6 @@ const Index = () => {
         query:value
       }
     })
-    console.log(result);
     setNotes(result)
     
   };
