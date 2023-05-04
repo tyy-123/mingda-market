@@ -87,6 +87,17 @@ const useWhere2go = () => {
   const goBack = () => {
     history.goBack();
   };
+
+  
+  /**
+   * 跳转我的帖子
+   */
+  const goMyNote= () => {
+    history.push({
+      pathname: '/market/home',
+    });
+  };
+
   return {
     goBack,
     goLogin,

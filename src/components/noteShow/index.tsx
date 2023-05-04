@@ -5,6 +5,7 @@ import useWhere2go from '@/hooks/useWhere2go';
 
 export interface NoteShowProps extends BaseComponentProps {
   noteMSg: NoteMsg;
+  kw?: String;
 }
 export const ModelTypeMap = new Map([
   [ModelType.USEDIDLE, '二手闲置'],
@@ -15,7 +16,7 @@ export const ModelTypeMap = new Map([
   [ModelType.SCHOOLWORK, '校园招聘'],
 ]);
 
-const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
+const NoteShow: React.FC<NoteShowProps> = ({ noteMSg, kw }) => {
   const {
     noteId,
     avatar,
@@ -29,7 +30,17 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
   } = noteMSg;
 
   const { goNoteDetail, goMsgDetail } = useWhere2go();
+  const highLight = (n: any, m: any) => {
+    let str = n;
+    let word = m;
+    let result = str.replace(
+      new RegExp('(' + word + ')', 'ig'),
+      '<span style="color:#57ba9d" >' + word + '</span>',
+    );
+    console.log(result);
 
+    return result;
+  };
   return (
     <div className="md__note-show">
       <header className="note-header">
@@ -49,8 +60,9 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg }) => {
           goNoteDetail(noteId);
         }}
         className="note-content"
+        dangerouslySetInnerHTML={{ __html: highLight(content, kw) }}
       >
-        {content}
+        {/* {content} */}
       </main>
       <div
         className="img-list"

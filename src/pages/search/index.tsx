@@ -8,18 +8,25 @@ const { Search } = Input;
 
 const Index = () => {
   const [notes, setNotes] = useState<NoteMsg[]>();
-
-
+  const [kw, setKw] = useState('');
   const getQueryNoteAjax = jdMixAjax(apiNote.getQueryNote_get);
+  /**
+   * 搜索
+   * @param value 查询值
+   */
   const handleSearch = async (value: string) => {
     console.log(value);
-    const result=await getQueryNoteAjax.run({
-      params:{
-        query:value
-      }
-    })
-    setNotes(result)
-    
+    const result = await getQueryNoteAjax.run({
+      params: {
+        query: value,
+      },
+    });
+    setNotes(result);
+  };
+
+  const handleChange = (e: any) => {
+    const { value } = e.target;
+    setKw(value);
   };
   return (
     <div className="md__search-note">
@@ -29,12 +36,13 @@ const Index = () => {
           allowClear
           onSearch={handleSearch}
           style={{ width: '80%' }}
+          onChange={handleChange}
         />
-        <span className="search-tip">搜索</span>
+        <span className="search-tip" onClick={()=>{handleSearch(kw)}}>搜索</span>
       </div>
       <div className="note-list">
-      {notes?.map((item) => (
-          <NoteShow noteMSg={item} />
+        {notes?.map((item) => (
+          <NoteShow noteMSg={item} kw={kw} />
         ))}
       </div>
     </div>
