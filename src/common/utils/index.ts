@@ -6,25 +6,21 @@ import { getToken } from './user';
 import _, { isNumber } from 'lodash';
 
 // 手机号校验
-export const REX_PHONE =
-  /^1(3\d|4[5-9]|5[0-35-9]|6[2567]|7[0-8]|8\d|9[0-35-9])\d{8}$/;
+export const REX_PHONE = /^1(3\d|4[5-9]|5[0-35-9]|6[2567]|7[0-8]|8\d|9[0-35-9])\d{8}$/;
 // 姓名
 export const REX_NAME = /^[\u4e00-\u9fa50-9A-Za-z]+$/;
 // 密码
 export const REX_PWD = /^(?=.*\d)[A-Za-z\d][\s\S]{6,}$/;
 //邮箱
-export const REX_EMAIL =
-  /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+export const REX_EMAIL = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 // 护照
 export const REX_PASSPORT = /^[a-zA-Z0-9]{5,17}$/;
 // 身份证
-export const REX_ID_CARD =
-  /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+export const REX_ID_CARD = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
 // 银行卡号
 export const REX_CREDIT = /^(?!0{16})[0-9]{16,19}$/;
 // 满足校验身份证号或者护照其中一个
-export const REX_PASSPORT_ID =
-  /^(?=.*\d)[a-zA-Z\d]{6,}$|^(?=.*\d)[a-zA-Z\d]{1,2}[0-9]{5,10}$/;
+export const REX_PASSPORT_ID = /^(?=.*\d)[a-zA-Z\d]{6,}$|^(?=.*\d)[a-zA-Z\d]{1,2}[0-9]{5,10}$/;
 
 //限制中英数
 export const REX_ACCOUNT = /^[\u4e00-\u9fa50-9A-Za-z]+$/;
@@ -221,52 +217,57 @@ export const treeToList = (tree: any, listData: any[]) => {
 };
 
 //通过时间获取时间描述
-export const getDescribeTime = (UTCtiem: string) => {
-  var T_pos = UTCtiem.indexOf('T');
-  var Z_pos = UTCtiem.indexOf('Z');
-  var year_month_day = UTCtiem.substr(0, T_pos);
-  var hour_minute_second = UTCtiem.substr(T_pos + 1, Z_pos - T_pos - 1);
-  var new_datetime = year_month_day + ' ' + hour_minute_second;
+export const getDescribeTime = (dateTime: any) => {
+  // 用毫秒表示分钟、小时、天、周、月
+  let minute = 1000 * 60;
+  let hour = minute * 60;
+  let day = hour * 24;
+  let week = day * 7;
+  let month = day * 30;
+  // 获取当前时间并转换为时间戳，方便计算
+  let timestamp_current = new Date().getTime();
 
-  var dateTime = new Date(new_datetime);
+  // 将传入的时间格式字符串解析为Date对象
+  let _date = new Date(dateTime);
 
-  var no1new = dateTime.valueOf();
+  // 将Date对象转换为时间戳，方便计算
+  let timestamp_input = _date.getTime();
 
-  var year = dateTime.getFullYear();
-  var month = dateTime.getMonth() + 1;
-  var day = dateTime.getDate();
-  var hour = dateTime.getHours();
-  var minute = dateTime.getMinutes();
-  var second = dateTime.getSeconds();
-  var now = new Date();
-  var now_new = now.valueOf(); //typescript转换写法
+  // 计算当前时间与传入的时间之间相差的时间戳
+  let timestamp_diff = timestamp_current - timestamp_input;
 
-  var milliseconds = 0;
-  var timeSpanStr;
+  // 计算时间差共有多少个分钟
+  let minC: any = timestamp_diff / minute;
+  // 计算时间差共有多少个小时
+  let hourC: any = timestamp_diff / hour;
+  // 计算时间差共有多少个天
+  let dayC: any = timestamp_diff / day;
+  // 计算时间差共有多少个周
+  let weekC: any = timestamp_diff / week;
+  // 计算时间差共有多少个月
+  let monthC: any = timestamp_diff / month;
 
-  milliseconds = now_new - no1new;
-
-  if (milliseconds <= 1000 * 60 * 1) {
-    timeSpanStr = '刚刚';
-  } else if (1000 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60) {
-    timeSpanStr = Math.round(milliseconds / (1000 * 60)) + '分钟前';
-  } else if (
-    1000 * 60 * 60 * 1 < milliseconds &&
-    milliseconds <= 1000 * 60 * 60 * 24
-  ) {
-    timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60)) + '小时前';
-  } else if (
-    1000 * 60 * 60 * 24 < milliseconds &&
-    milliseconds <= 1000 * 60 * 60 * 24 * 15
-  ) {
-    timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60 * 24)) + '天前';
-  } else if (
-    milliseconds > 1000 * 60 * 60 * 24 * 15 &&
-    year == now.getFullYear()
-  ) {
-    timeSpanStr = month + '-' + day + ' ' + hour + ':' + minute;
+  if (monthC >= 1 && monthC < 4) {
+    return parseInt(monthC) + '月前';
+  } else if (weekC >= 1 && weekC < 4) {
+    return parseInt(weekC) + '周前';
+  } else if (dayC >= 1 && dayC < 7) {
+    return parseInt(dayC) + '天前';
+  } else if (hourC >= 1 && hourC < 24) {
+    return parseInt(hourC) + '小时前';
+  } else if (minC >= 1 && minC < 60) {
+    return parseInt(minC) + '分钟前';
+  } else if (timestamp_diff >= 0 && timestamp_diff <= minute) {
+    // 时间差大于0并且小于1分钟
+    return '刚刚';
   } else {
-    timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+    return (
+      _date.getFullYear() +
+      '年' +
+      _date.getMonth() +
+      '月' +
+      _date.getDate() +
+      '日'
+    );
   }
-  return timeSpanStr;
 };
