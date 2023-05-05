@@ -11,5 +11,17 @@ const apiComment = {
       method: 'GET',
     },
   },
+  addComment_get: {
+    url: '/addComment',
+    options: {
+      method: 'GET',
+    },
+  },
+  addChildComment_get: {
+    url: '/addChildComment',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiComment };

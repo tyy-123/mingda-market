@@ -41,5 +41,11 @@ const apiNote = {
       method: 'GET',
     },
   },
+  updateCommentCount_get: {
+    url: '/updateCommentCount',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiNote };
