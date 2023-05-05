@@ -1,7 +1,40 @@
-import { useRef, useState } from 'react';
+import NoteShow from '@/components/noteShow';
+import ReturnHeader from '@/components/returnHeader';
+import useUser from '@/hooks/useUser';
+import { NoteMsg } from '@/interface';
+import { apiNote, jdMixAjax } from '@/services';
+import { useEffect, useState } from 'react';
+import './index.less'
 
 const Index = () => {
+  const { userInfo } = useUser();
+  const [myNote, setMyNote] = useState<NoteMsg[]>([]);
+  const getNoteByIdAjax = jdMixAjax(apiNote.getNoteById_get);
 
-  return <div>我的帖子</div>;
+  const init = async () => {
+    const result = await getNoteByIdAjax.run({
+      params: {
+        userId: userInfo.userId,
+      },
+    });
+    setMyNote(result);
+    console.log(result);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+  
+  return (
+    <div className='personal-my-note'>
+      <ReturnHeader />
+      <main className="market-post">
+        帖子列表
+        {myNote?.map((item) => (
+          <NoteShow noteMSg={item} />
+        ))}
+      </main>
+    </div>
+  );
 };
 export default Index;

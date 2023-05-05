@@ -88,13 +88,29 @@ const useWhere2go = () => {
     history.goBack();
   };
 
-  
   /**
    * 跳转我的帖子
    */
-  const goMyNote= () => {
+  const goMyNote = () => {
     history.push({
-      pathname: '/market/home',
+      pathname: '/personal/home/myNote',
+    });
+  };
+  /**
+   * 跳转修改个人信息
+   */
+  const goPwd = () => {
+    history.push({
+      pathname: '/personal/home/pwd',
+    });
+  };
+
+  /**
+   * 跳转查看个人信息
+   */
+  const goSetting = () => {
+    history.push({
+      pathname: '/personal/home/setting',
     });
   };
 
@@ -108,6 +124,9 @@ const useWhere2go = () => {
     goHome,
     goMarketDetail,
     goNoteDetail,
+    goMyNote,
+    goPwd,
+    goSetting
   };
 };
 

@@ -47,5 +47,11 @@ const apiNote = {
       method: 'GET',
     },
   },
+  getNoteById_get: {
+    url: '/getNoteById',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiNote };

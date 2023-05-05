@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { useModel } from 'umi';
 import { getToken } from '@/common/utils';
 import './index.less';
+import useWhere2go from '@/hooks/useWhere2go';
 
 const cls = classNames('md__personal-page');
 
@@ -23,7 +24,22 @@ const Index = () => {
 
   const [userInfo, setUerInfo] = useState();
 
-  const personCenterItems = ['个人资料', '我的帖子', '账号设置'];
+  const { goMyNote, goPwd, goSetting } = useWhere2go();
+
+  const personCenterItems = [
+    {
+      title: '个人资料',
+      jumpTo: goSetting,
+    },
+    {
+      title: '我的帖子',
+      jumpTo: goMyNote,
+    },
+    {
+      title: '修改密码',
+      jumpTo: goPwd,
+    },
+  ];
 
   //初始化个人信息
   const init = async () => {
@@ -35,7 +51,7 @@ const Index = () => {
     console.log(initialState?.user);
     setInitialState({
       ...initialState!,
-      user:res,
+      user: res,
     });
   };
 
@@ -52,9 +68,9 @@ const Index = () => {
         <div>{username}</div>
       </div>
       <div className="personal-center">
-        {personCenterItems.map((item) => (
-          <div className="center-item">
-            {`${item}`}
+        {personCenterItems.map(({ title, jumpTo: handleJump }: any) => (
+          <div className="center-item" onClick={handleJump  }>
+            {`${title}`}
             <span className="center-more">{`>`}</span>
           </div>
         ))}

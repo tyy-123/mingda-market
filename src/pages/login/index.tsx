@@ -48,6 +48,7 @@ const Login: React.FC = () => {
       setTimeout(async () => {
         const user = await refreshUser();
         message.success('登录成功');
+        console.log(user);
 
         // const type = user && user.type;
         // if (type && [UserType.EXPERT, UserType.LEADER].includes(type)) {
@@ -116,34 +117,6 @@ const Login: React.FC = () => {
               },
             ]}
           />
-          {/* <ProFormCaptcha
-        name="captcha"
-        fieldRef={captchaRef}
-        fieldProps={{
-          size: 'large',
-          prefix: <SafetyCertificateOutlined className={'prefixIcon'} />,
-          maxLength: 5,
-        }}
-        captchaProps={{
-          size: 'large',
-          className: 'jd-btn--captcha',
-        }}
-        placeholder={'请输入验证码'}
-        countDown={0}
-        captchaTextRender={(timing, count) => {
-          if (timing) {
-            captchaRef.current?.endTiming();
-          }
-          return <img src={data?.imageBase} alt="" />;
-        }}
-        rules={[
-          {
-            required: true,
-            message: '请输入验证码',
-          },
-        ]}
-        onGetCaptcha={refresh}
-      /> */}
           <div
             style={{
               marginBlockEnd: 24,

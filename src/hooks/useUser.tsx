@@ -15,9 +15,9 @@ const useUser = (userId?: MixSN) => {
     const user = await jdAjax({}, apiUser.getLoginUser_get);
     setInitialState({
       ...initialState!,
-      user,
+      user: user.data,
     });
-    return user;
+    return user.data;
   };
 
   // /**

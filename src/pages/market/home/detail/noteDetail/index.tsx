@@ -14,6 +14,7 @@ import './index.less';
 import { apiComment, apiNote, jdMixAjax } from '@/services';
 import CommentShow from '@/components/commentShow';
 import useUser from '@/hooks/useUser';
+import ReturnHeader from '@/components/returnHeader';
 
 const Index: React.FC = () => {
   const [state, setState] = useUrlState();
@@ -35,8 +36,6 @@ const Index: React.FC = () => {
 
   //发帖自动聚焦
   const myInput: any = useRef();
-
-  const { goBack } = useWhere2go();
 
   const { userInfo } = useUser();
 
@@ -148,7 +147,7 @@ const Index: React.FC = () => {
   };
   return (
     <div className="md__noteDetail-page">
-      <div className="note-detail-header" onClick={goBack}>{`< 返回`}</div>
+      <ReturnHeader/>
       {noteMsg && <NoteShow noteMSg={{ ...noteMsg }} />}
       <footer
         className="noter-footer"
