@@ -37,8 +37,6 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg, kw }) => {
       new RegExp('(' + word + ')', 'ig'),
       '<span style="color:#57ba9d" >' + word + '</span>',
     );
-    console.log(result);
-
     return result;
   };
   return (

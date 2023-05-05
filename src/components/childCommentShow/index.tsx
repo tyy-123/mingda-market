@@ -8,13 +8,22 @@ import { useEffect, useState } from 'react';
 
 export interface CommentShowProps extends BaseComponentProps {
   comment: any;
+  onComment: any;
 }
 
-const Index: React.FC<CommentShowProps> = ({ comment }) => {
-  const { userId, releaseTime, content, reply_to, commentId } = comment;
-  // console.log(commentId);
+const Index: React.FC<CommentShowProps> = ({ comment, onComment }) => {
+  const {
+    userId,
+    releaseTime,
+    content,
+    reply_to,
+    commentId,
+    parentCommentId,
+  } = comment;
+
   const { avatar, username } = useUser(userId);
   const { username: replyToUserName } = useUser(reply_to);
+  console.log(comment);
 
   return (
     <div className="md__child-comment-show">
@@ -33,7 +42,12 @@ const Index: React.FC<CommentShowProps> = ({ comment }) => {
       <main className="comment-content">{content}</main>
       <footer className="comment-footer">
         <span className="footer-left">{getDescribeTime(releaseTime)}</span>
-        <span className="footer-right">回复</span>
+        <span
+          className="footer-right"
+          onClick={() => onComment(parentCommentId, userId)}
+        >
+          回复
+        </span>
       </footer>
     </div>
   );
