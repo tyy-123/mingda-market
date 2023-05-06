@@ -29,6 +29,18 @@ const apiUser={
       method: 'GET',
     },
   },
+  updateUserMsg_get:{
+    url:'/updateUserMsg',
+    options: {
+      method: 'GET',
+    },
+  },
+  updateUserPassword:{
+    url:'/updateUserPassword',
+    options: {
+      method: 'GET',
+    },
+  }
 
 }
 export { apiUser };

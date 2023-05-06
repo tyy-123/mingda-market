@@ -8,14 +8,14 @@ const useAuth = () => {
   /**
    * 强制下线
    */
-  // const forcedOffline = () => {
-  //   setInitialState({
-  //     globalConfig: initialState!?.globalConfig,
-  //     user: null,
-  //   });
-  //   clearUser();
-  //   history.replace({ pathname: '/login' });
-  // };
+  const forcedOffline = () => {
+    setInitialState({
+      ...initialState!,
+      user: null,
+    });
+    clearUser();
+    history.replace({ pathname: '/login' });
+  };
 
   /**
    * 问询退出
@@ -33,7 +33,7 @@ const useAuth = () => {
   return {
     isLogin: initialState?.user || getToken() ? true : false,
     logout,
-    // forcedOffline,
+    forcedOffline,
   };
 };
 export default useAuth;
