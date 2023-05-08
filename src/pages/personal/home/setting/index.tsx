@@ -39,7 +39,7 @@ const Settings: React.FC<SettingsProps> = () => {
   const [form] = Form.useForm();
 
   const getUserMsgAjax = jdMixAjax(apiUser.getLoginUser_get);
-  const editAjax = jdMixAjax(apiUser.getLoginUser_get);
+  const editAjax = jdMixAjax(apiUser.updateUserMsg_get);
 
   const { refreshUser } = useUser();
 
@@ -60,23 +60,24 @@ const Settings: React.FC<SettingsProps> = () => {
    */
   const handlePersonalSet = async (personalMsg: FormData) => {
     console.log(personalMsg);
-    const { upload } = personalMsg;
-    const imgUrl = await getImgUrlUploadImage(upload[0]);
-    console.log(imgUrl);
-
-    // try {
-    //   await editAjax.run({
-    //     data: {
-    //       ...personalMsg,
-    //     },
-    //   });
-    //   await refreshUser();
-    //   message.success('修改成功');
-    //   return true;
-    // } catch (error) {
-    //   message.error('修改失败');
-    //   return false;
-    // }
+    const { upload,username,userId } = personalMsg;
+    const avatar = await getImgUrlUploadImage(upload[0]);
+    console.log(avatar);
+    try {
+      await editAjax.run({
+        params: {
+          avatar,
+          username,
+          userId
+        },
+      });
+      await refreshUser();
+      message.success('修改成功');
+      return true;
+    } catch (error) {
+      message.error('修改失败');
+      return false;
+    }
   };
 
   /**
