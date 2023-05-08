@@ -7,16 +7,17 @@ import factsImg from '@/assets/images/market-module-facts.png';
 import teacherImg from '@/assets/images/market-module-teacher.png';
 import workImg from '@/assets/images/market-module-work.png';
 
-import { Image, FloatButton } from 'antd';
+import { Image, FloatButton, Spin } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
 import { useModal } from '@/hooks/useModal';
 import PostModal from '@/components/postModal';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { apiNote, jdMixAjax } from '@/services';
 import { NoteMsg } from '@/interface';
 import NoteShow from '@/components/noteShow';
+import { useScroll, useSize } from 'ahooks';
 const Index = () => {
   const { goMarketDetail } = useWhere2go();
   //发布帖子Modal
@@ -24,8 +25,15 @@ const Index = () => {
   const getNoteListAjax = jdMixAjax(apiNote.getNoteList_get);
   const getNoteListByPageAjax = jdMixAjax(apiNote.getNoteListPage_get);
 
-  const [notes, setNotes] = useState<NoteMsg[]>();
+  const [notes, setNotes] = useState<NoteMsg[]>([]);
 
+  const ref: any = useRef(null);
+  const scroll: any = useScroll(document);
+
+  const [noteData, setNoteData] = useState<any>({
+    list: [],
+    total: 0,
+  });
   const marketModuleItems = [
     {
       key: 'usedIdle',
@@ -59,49 +67,62 @@ const Index = () => {
     },
   ];
 
-  const init = async () => {
+  const init = async (current?: any) => {
     //获取所有帖子
     const res = await getNoteListAjax.run({});
     const res1 = await getNoteListByPageAjax.run({
       params: {
-        current: 1,
-        page: 5,
-        modelId: 0,
+        current: current ? current : 1,
+        page: 10,
       },
     });
     // console.log(res);
-    // console.log(res1);
-    setNotes(res);
+    console.log(res1);
+    setNotes(notes?.concat(res1.list));
+    setNoteData({
+      list: noteData.list.concat(res1.list),
+      total: res1.total,
+    });
   };
+
+  useEffect(() => {
+    if (scroll?.top && ref?.current?.clientHeight - scroll?.top === 622) {
+      console.log('滑倒底啦');
+      //滑倒了最低端
+      if (noteData?.list?.length < noteData.total) {
+        const page = (notes as any)?.length / 10 + 1;
+        init(page);
+      }
+    }
+  }, [scroll]);
 
   useEffect(() => {
     init();
   }, []);
   return (
     <div className="md__market-home">
-      <header className="home-header">
-        <Image src={backgroundImg} preview={false} />
-      </header>
-      <section className="market-module">
-        {marketModuleItems.map(({ key, icon, label }) => (
-          <div
-            key={key}
-            className="module-item"
-            onClick={() => {
-              goMarketDetail(key);
-            }}
-          >
-            <Image src={icon} preview={false} />
-            <p>{label}</p>
-          </div>
-        ))}
-      </section>
-      <main className="market-post">
-        帖子列表
-        {notes?.map((item) => (
-          <NoteShow noteMSg={item} />
-        ))}
-      </main>
+      <Spin spinning={getNoteListByPageAjax.loading}>
+        <header className="home-header">
+          <Image src={backgroundImg} preview={false} />
+        </header>
+        <section className="market-module">
+          {marketModuleItems.map(({ key, icon, label }) => (
+            <div
+              key={key}
+              className="module-item"
+              onClick={() => {
+                goMarketDetail(key);
+              }}
+            >
+              <Image src={icon} preview={false} />
+              <p>{label}</p>
+            </div>
+          ))}
+        </section>
+        <main className="market-post" ref={ref}>
+          {notes?.length && notes?.map((item) => <NoteShow noteMSg={item} />)}
+        </main>
+      </Spin>
       <Footer />
       <FloatButton
         icon={<PlusCircleFilled style={{ color: '#43ba9d' }} />}

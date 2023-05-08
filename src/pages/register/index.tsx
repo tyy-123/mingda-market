@@ -123,7 +123,7 @@ const Register: React.FC<RegisterProps> = () => {
             render: (props, doms) => {
               return [
                 <Button
-                  className="jd-btn--register"
+                  className="md-btn--green"
                   key="submit"
                   onClick={() => props.form?.submit?.()}
                   loading={registerAjax.loading || isJumping}
@@ -202,7 +202,7 @@ const Register: React.FC<RegisterProps> = () => {
             }}
             captchaProps={{
               size: 'large',
-              className: 'jd-btn--code',
+              className: 'md-btn--green',
             }}
             phoneName="email"
             name="authCode"

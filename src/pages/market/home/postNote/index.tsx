@@ -1,4 +1,3 @@
-import { ModelTypeMap } from '@/components/noteShow';
 import useUrlState from '@ahooksjs/use-url-state';
 import React, { useState } from 'react';
 import { Button, FloatButton, Form, Input, Upload, Tag } from 'antd';
@@ -11,9 +10,10 @@ import './index.less';
 import { apiNote, jdAjax, jdMixAjax } from '@/services';
 import useNote from '@/hooks/useNote';
 import useUser from '@/hooks/useUser';
+import { ModelTypeMap } from '@/components/noteShow';
 const { TextArea } = Input;
 const Index: React.FC = () => {
-  const getLoginUserAjax = jdMixAjax(apiNote.postNote_post);
+  const postNoteAjax = jdMixAjax(apiNote.postNote_post);
   const uploadAjax = jdMixAjax({
     ...apiNote.uploadImage_post,
     options: {
@@ -43,9 +43,7 @@ const Index: React.FC = () => {
       console.log(imgUrl);
       imgList += imgUrl + '*';
     }
-    console.log(imgList);
-
-    await getLoginUserAjax.run({
+    await postNoteAjax.run({
       data: {
         userId: userInfo.userId,
         content,
@@ -53,6 +51,7 @@ const Index: React.FC = () => {
         modelId: state.modelId,
       },
     });
+    goHome()
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -80,7 +79,6 @@ const Index: React.FC = () => {
         name="note"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 16 }}
-        // style={{ maxWidth: 600 }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
