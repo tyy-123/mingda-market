@@ -6,6 +6,7 @@ import { useModel } from 'umi';
 import { getToken } from '@/common/utils';
 import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
+import useAuth from '@/hooks/useAuth';
 
 const cls = classNames('md__personal-page');
 
@@ -25,6 +26,7 @@ const Index = () => {
   const [userInfo, setUerInfo] = useState();
 
   const { goMyNote, goPwd, goSetting } = useWhere2go();
+  const { logout } = useAuth();
 
   const personCenterItems = [
     {
@@ -38,6 +40,10 @@ const Index = () => {
     {
       title: '修改密码',
       jumpTo: goPwd,
+    },
+    {
+      title: '退出登录',
+      jumpTo: logout,
     },
   ];
 
