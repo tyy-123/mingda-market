@@ -2,6 +2,7 @@ import { BaseComponentProps, ModelType, NoteMsg } from '@/interface';
 import { Avatar, Button, Upload, message, Image } from 'antd';
 import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
+import { getDescribeTime } from '@/common/utils';
 
 export interface NoteShowProps extends BaseComponentProps {
   noteMSg: NoteMsg;
@@ -69,9 +70,9 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg, kw }) => {
         }}
       >
         {imgs?.map(
-          (src: string) =>
+          (src: string,i:number) =>
             src && (
-              <div className="img-div">
+              <div key={src+i} className="img-div">
                 <img src={src}></img>
               </div>
             ),
@@ -79,6 +80,7 @@ const NoteShow: React.FC<NoteShowProps> = ({ noteMSg, kw }) => {
       </div>
       <footer className="note-footer">
         <Button type="link">#{ModelTypeMap.get(modelId)}#</Button>
+        <span className="footer-right">{getDescribeTime(releaseTime)}</span>
       </footer>
     </div>
   );

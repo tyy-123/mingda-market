@@ -39,8 +39,8 @@ const Index: React.FC = () => {
       label: `全部`,
       children: (
         <div className="tab-note-list">
-          {allNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {allNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),
@@ -50,8 +50,8 @@ const Index: React.FC = () => {
       label: `二手闲置`,
       children: (
         <div className="tab-note-list">
-          {usedIdleNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {usedIdleNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),
@@ -61,8 +61,8 @@ const Index: React.FC = () => {
       label: `打听求助`,
       children: (
         <div className="tab-note-list">
-          {askFoeHelpNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {askFoeHelpNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),
@@ -72,8 +72,8 @@ const Index: React.FC = () => {
       label: `恋爱交友`,
       children: (
         <div className="tab-note-list">
-          {loveMakeFriendsNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {loveMakeFriendsNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),
@@ -83,8 +83,8 @@ const Index: React.FC = () => {
       label: `瓜田趣事`,
       children: (
         <div className="tab-note-list">
-          {interestFactsNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {interestFactsNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),
@@ -94,8 +94,8 @@ const Index: React.FC = () => {
       label: `兼职信息`,
       children: (
         <div className="tab-note-list">
-          {teacherMsgsNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {teacherMsgsNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),
@@ -105,8 +105,8 @@ const Index: React.FC = () => {
       label: `校园招聘`,
       children: (
         <div className="tab-note-list">
-          {schoolWorkNotes?.map((item) => (
-            <NoteShow noteMSg={item} />
+          {schoolWorkNotes?.map((item,i:any) => (
+            <NoteShow key={item+i} noteMSg={item} />
           ))}
         </div>
       ),

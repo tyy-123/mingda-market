@@ -41,8 +41,8 @@ const Index = () => {
         <span className="search-tip" onClick={()=>{handleSearch(kw)}}>搜索</span>
       </div>
       <div className="note-list">
-        {notes?.map((item) => (
-          <NoteShow noteMSg={item} kw={kw} />
+        {notes?.map((item,i:any) => (
+          <NoteShow key={item+i} noteMSg={item} kw={kw} />
         ))}
       </div>
     </div>

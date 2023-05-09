@@ -30,8 +30,8 @@ const Index = () => {
       <ReturnHeader />
       <main className="market-post">
         帖子列表
-        {myNote?.map((item) => (
-          <NoteShow noteMSg={item} />
+        {myNote?.map((item,i:any) => (
+          <NoteShow key={item+i} noteMSg={item} />
         ))}
       </main>
     </div>
