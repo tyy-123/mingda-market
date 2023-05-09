@@ -18,6 +18,7 @@ import { apiNote, jdMixAjax } from '@/services';
 import { NoteMsg } from '@/interface';
 import NoteShow from '@/components/noteShow';
 import { useScroll, useSize } from 'ahooks';
+import useUser from '@/hooks/useUser';
 const Index = () => {
   const { goMarketDetail } = useWhere2go();
   //发布帖子Modal
@@ -29,6 +30,8 @@ const Index = () => {
 
   const ref: any = useRef(null);
   const scroll: any = useScroll(document);
+
+  const { userInfo } = useUser();
 
   const [noteData, setNoteData] = useState<any>({
     list: [],
@@ -74,6 +77,7 @@ const Index = () => {
       params: {
         current: current ? current : 1,
         page: 10,
+        userId: userInfo.userId,
       },
     });
     // console.log(res);
@@ -101,24 +105,24 @@ const Index = () => {
   }, []);
   return (
     <div className="md__market-home">
+      <header className="home-header">
+        <Image src={backgroundImg} preview={false} />
+      </header>
+      <section className="market-module">
+        {marketModuleItems.map(({ key, icon, label }) => (
+          <div
+            key={key}
+            className="module-item"
+            onClick={() => {
+              goMarketDetail(key);
+            }}
+          >
+            <Image src={icon} preview={false} />
+            <p>{label}</p>
+          </div>
+        ))}
+      </section>
       <Spin spinning={getNoteListByPageAjax.loading}>
-        <header className="home-header">
-          <Image src={backgroundImg} preview={false} />
-        </header>
-        <section className="market-module">
-          {marketModuleItems.map(({ key, icon, label }) => (
-            <div
-              key={key}
-              className="module-item"
-              onClick={() => {
-                goMarketDetail(key);
-              }}
-            >
-              <Image src={icon} preview={false} />
-              <p>{label}</p>
-            </div>
-          ))}
-        </section>
         <main className="market-post" ref={ref}>
           {notes?.length && notes?.map((item) => <NoteShow noteMSg={item} />)}
         </main>

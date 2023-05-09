@@ -27,14 +27,12 @@ const useNote = () => {
    * @param modelId 模块Id
    */
   const getModelNotes = async (modelId: number) => {
-    const result = await getNoteListByPageAjax.run({
+    const result = await getNoteListAjax.run({
       params: {
-        current: 1,
-        page: 5,
         modelId,
       },
     });
-    return result;
+    return result ;
   };
 
   const init = async () => {
