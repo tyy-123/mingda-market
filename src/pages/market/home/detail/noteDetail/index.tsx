@@ -38,6 +38,7 @@ const Index: React.FC = () => {
   const myInput: any = useRef();
 
   const { userInfo } = useUser();
+  const { addRecommendData } = useNote();
 
   const init = async (noteId: number) => {
     const noteMsg = await getNoteMsgById(noteId);
@@ -131,6 +132,11 @@ const Index: React.FC = () => {
           noteId: state.noteId,
         },
       });
+      await addRecommendData({
+        userId: userInfo.userId,
+        modelId: noteMsg.modelId,
+      });
+
       init(state.noteId);
     } catch (error) {}
   };
@@ -147,7 +153,7 @@ const Index: React.FC = () => {
   };
   return (
     <div className="md__noteDetail-page">
-      <ReturnHeader/>
+      <ReturnHeader />
       {noteMsg && <NoteShow noteMSg={{ ...noteMsg }} />}
       <footer
         className="noter-footer"

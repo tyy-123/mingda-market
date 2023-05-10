@@ -28,7 +28,7 @@ const Index: React.FC = () => {
   console.log(userInfo);
 
   const { goHome } = useWhere2go();
-  const { getImgUrlUploadImage } = useNote();
+  const { getImgUrlUploadImage,addRecommendData } = useNote();
 
   /**
    * 发布帖子
@@ -51,6 +51,7 @@ const Index: React.FC = () => {
         modelId: state.modelId,
       },
     });
+    await addRecommendData({userId: userInfo.userId,modelId: state.modelId})
     goHome()
   };
 

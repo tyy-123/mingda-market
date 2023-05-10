@@ -53,5 +53,11 @@ const apiNote = {
       method: 'GET',
     },
   },
+  addRecommendData_get: {
+    url: '/addRecommendData',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiNote };

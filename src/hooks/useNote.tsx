@@ -15,6 +15,8 @@ const useNote = () => {
   });
   const getNoteMsgByIdAjax = jdMixAjax(apiNote.getNoteMsgById_get);
 
+  const addRecommendDataAjax = jdMixAjax(apiNote.addRecommendData_get);
+
   const [allNotes, setAllNotes] = useState<NoteMsg[]>();
   const [usedIdleNotes, setUsedIdleNotes] = useState<NoteMsg[]>();
   const [askFoeHelpNotes, setAskFoeHelpNotes] = useState<NoteMsg[]>();
@@ -32,7 +34,7 @@ const useNote = () => {
         modelId,
       },
     });
-    return result ;
+    return result;
   };
 
   const init = async () => {
@@ -59,13 +61,17 @@ const useNote = () => {
   const getImgUrlUploadImage = async (file: { originFileObj: any }) => {
     const formData: any = new FormData();
     formData.append('file', file.originFileObj);
-    console.log(1);
     const imgUrl = await uploadAjax.run({
       data: formData,
     });
     return imgUrl;
   };
 
+  /**
+   * 通过帖子Id获取帖子信息
+   * @param noteId
+   * @returns
+   */
   const getNoteMsgById = async (noteId: number) => {
     const noteMsg = await getNoteMsgByIdAjax.run({
       params: {
@@ -75,6 +81,19 @@ const useNote = () => {
     console.log(noteMsg);
     return noteMsg;
   };
+
+  /**
+   * 添加推荐数据
+   * @param params
+   */
+  const addRecommendData = async (params: any) => {
+    try {
+      await addRecommendDataAjax.run({
+        params,
+      });
+    } catch (error) {}
+  };
+
   useEffect(() => {
     init();
   }, []);
@@ -89,6 +108,7 @@ const useNote = () => {
     loveMakeFriendsNotes,
     askFoeHelpNotes,
     usedIdleNotes,
+    addRecommendData,
   };
 };
 

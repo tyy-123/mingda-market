@@ -31,7 +31,7 @@ const Footer: React.FC<HeaderProps> = ({ className, style }) => {
     },
     {
       label: '消息',
-      key: '/message',
+      key: '/message/home',
       icon: <MessageOutlined />,
     },
     {
