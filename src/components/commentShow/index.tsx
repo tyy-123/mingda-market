@@ -47,7 +47,7 @@ const Index: React.FC<CommentShowProps> = ({ comment, onComment }) => {
   }, []);
 
   const handleComment = (userId: any, reply_to: any) => {
-    onComment(false, userId, reply_to);
+    onComment(false, commentId, reply_to);
   };
   return (
     <div className="md__comment-show">
