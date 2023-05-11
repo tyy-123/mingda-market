@@ -1,36 +1,82 @@
-import { useRef, useState } from 'react';
-import io from 'socket.io-client';
-const socket = io('ws://localhost:9999');
+import useUser from '@/hooks/useUser';
+import { apiMessage, jdMixAjax } from '@/services';
+import { Avatar } from 'antd';
+import { useEffect, useState } from 'react';
+import './index.less';
+import useWhere2go from '@/hooks/useWhere2go';
+import { getDescribeTime } from '@/common/utils';
 const Index = () => {
-  const [chatMsg, setChatMsg] = useState<any>([]);
-  const chatMsgRef: any = useRef([]);
-  // socket.emit('client_online', {
-  //   nickName: '测试一下',
-  //   id: 1,
-  // });
-  // socket.emit('client_msg', {
-  //   msg: '我是发送者',
-  //   nickName: '测试一下',
-  //   userId: 1,
-  // });
-  // socket.emit('client_online', {
-  //   nickName: '测试一下2',
-  //   id: 2,
-  // });
-  // socket.emit('client_msg', {
-  //   msg: '我是接受者',
-  //   nickName: '测试一下2',
-  //   userId: 2,
-  // });
-  // socket.on('server_msg', (data) => {
-  //   // const { chatMsg } = this.state;
-  //   console.log(data);
-  //   const newChatMsg = chatMsg.concat(data);
-  //   setChatMsg(newChatMsg);
-  //   // chatMsgRef.current = newChatMsg;
-  //   // console.log(newChatMsg);
-  // });
+  const [messageShowList, setMessageShowList] = useState<any>([]);
 
-  return <div>消息</div>;
+  const getMessageListAjax = jdMixAjax(apiMessage.getMessageList_get);
+
+  const { goMsgDetail } = useWhere2go();
+
+  const { userInfo, getUserInfoById } = useUser();
+
+  const init = async () => {
+    const messageList = await getMessageListAjax.run({
+      params: {
+        userId: userInfo.userId,
+      },
+    });
+    console.log(messageList);
+    let messageShowList = [];
+    for (let i = 0; i < messageList?.length; i++) {
+      const { replyUserId, message } = messageList[i];
+      const replyUserMsg = await getUserInfoById(replyUserId);
+      const { avatar, username } = replyUserMsg;
+      messageShowList.push({
+        ...messageList[i],
+        avatar,
+        username,
+        lastMsg: message[message?.length - 1].msg,
+      });
+    }
+    console.log(messageShowList);
+    setMessageShowList(messageShowList);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <div className="md-message__user">
+      <header className="message-header">
+        我的消息</header>
+      <main className="message-list">
+        {messageShowList?.map(
+          ({ avatar, lastMsg, username, releaseTime, replyUserId }: any) => (
+            <div className="message-item">
+              <header className="message-item-header">
+                <span className="header-left">
+                  <Avatar
+                    src={avatar}
+                    onClick={() => {
+                      goMsgDetail(replyUserId);
+                    }}
+                    size={50}
+                  />
+                </span>
+                <span className="header-right">
+                  <div className="right-top">
+                    <span className="user-name">{username}</span>
+                    <span className="time-right">
+                      {getDescribeTime(releaseTime)}
+                    </span>
+                    <div className='right-bottom'>{lastMsg}</div>
+                  </div>
+                </span>
+              </header>
+            </div>
+          ),
+        )}
+        {!messageShowList?.length&&'暂时没有你的消息喔'
+
+        }
+      </main>
+    </div>
+  );
 };
 export default Index;

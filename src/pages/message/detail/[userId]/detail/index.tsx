@@ -29,6 +29,7 @@ const Index = () => {
     const result = await getUserMessageAjax.run({
       params: {
         userId: userInfo.userId,
+        replyUserId: params.userId,
       },
     });
     console.log(result, '1111111111');
@@ -36,10 +37,6 @@ const Index = () => {
 
     setChatMsg(result?.message || []);
     chatMsgRef.current = result?.message || [];
-    // socket.emit('client_online', {
-    //   nickName: '测试一下2',
-    //   id: userInfo.userId,
-    // });
     socket.emit('client_online', {
       nickName: userInfo.userId,
       id: userInfo.userId,
@@ -49,69 +46,6 @@ const Index = () => {
       nickName: userInfo.userId,
       userId: userInfo.userId,
     });
-    // console.log(
-    //   JSON.stringify([
-    //     {
-    //       msg: '你好呀',
-    //       nickName: '测试一下2',
-    //       times: '2023-04-24 19:26:46',
-    //       userId: 10,
-    //       type: 1,
-    //     },
-    //     {
-    //       msg: '你好',
-    //       nickName: '你好',
-    //       times: '2023-04-24 19:26:46',
-    //       userId: 10,
-    //       type: 2,
-    //     },
-    //     {
-    //       msg: '我想问一下置物架用了多久了',
-    //       nickName: '测试一下2',
-    //       times: '2023-04-24 19:26:46',
-    //       userId: 4,
-    //       type: 1,
-    //     },
-    //     {
-    //       msg: '去年买的可小刀',
-    //       nickName: '测试一下2',
-    //       times: '2023-04-24 19:26:46',
-    //       userId: 10,
-    //       type: 2,
-    //     },
-    //   ]),
-    // );
-
-    // setChatMsg([
-    //   {
-    //     msg: '你好呀',
-    //     nickName: '测试一下2',
-    //     times: '2023-04-24 19:26:46',
-    //     userId: 10,
-    //     type: 2,
-    //   },
-    //   {
-    //     msg: '你好',
-    //     nickName: '你好',
-    //     times: '2023-04-24 19:26:46',
-    //     userId: 10,
-    //     type: 1,
-    //   },
-    //   {
-    //     msg: '我想问一下置物架用了多久了',
-    //     nickName: '测试一下2',
-    //     times: '2023-04-24 19:26:46',
-    //     userId: 4,
-    //     type: 2,
-    //   },
-    //   {
-    //     msg: '去年买的可小刀',
-    //     nickName: '测试一下2',
-    //     times: '2023-04-24 19:26:46',
-    //     userId: 10,
-    //     type: 1,
-    //   },
-    // ]);
   };
 
   const handleSendMessage = () => {
@@ -181,12 +115,14 @@ const Index = () => {
         chatMsgRef.current = newChatMsgSet;
         console.log(newChatMsgSet);
         console.log(JSON.stringify(newChatMsgSet));
-
+        const fNewChatMsgSet = newChatMsgSet.filter(
+          ({ msg }: any) => msg !== '',
+        );
         await saveUserMessageAjax.run({
           data: {
             userId: userInfo.userId,
             replyUserId: Number(params.userId),
-            message: JSON.stringify(newChatMsgSet),
+            message: JSON.stringify(fNewChatMsgSet),
           },
         });
         const reserveChatMessage = newChatMsgSet.map((item: any) => {
@@ -195,11 +131,14 @@ const Index = () => {
             type: item.type === 1 ? 2 : 1,
           };
         });
+        const fReserveChatMessage = reserveChatMessage.filter(
+          ({ msg }) => msg !== '',
+        );
         await saveUserMessageAjax.run({
           data: {
             userId: Number(params.userId),
             replyUserId: userInfo.userId,
-            message: JSON.stringify(reserveChatMessage),
+            message: JSON.stringify(fReserveChatMessage),
           },
         });
       }

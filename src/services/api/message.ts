@@ -17,5 +17,11 @@ const apiMessage = {
       'Content-Type': 'application/json',
     },
   },
+  getMessageList_get: {
+    url: '/getMessageList',
+    options: {
+      method: 'GET',
+    },
+  },
 };
 export { apiMessage };
