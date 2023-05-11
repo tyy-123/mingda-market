@@ -1,6 +1,6 @@
 import useUser from '@/hooks/useUser';
 import { apiMessage, jdMixAjax } from '@/services';
-import { Avatar } from 'antd';
+import { Avatar, Empty } from 'antd';
 import { useEffect, useState } from 'react';
 import './index.less';
 import useWhere2go from '@/hooks/useWhere2go';
@@ -43,21 +43,19 @@ const Index = () => {
 
   return (
     <div className="md-message__user">
-      <header className="message-header">
-        我的消息</header>
+      <header className="message-header">我的消息</header>
       <main className="message-list">
         {messageShowList?.map(
           ({ avatar, lastMsg, username, releaseTime, replyUserId }: any) => (
-            <div className="message-item">
+            <div
+              className="message-item"
+              onClick={() => {
+                goMsgDetail(replyUserId);
+              }}
+            >
               <header className="message-item-header">
                 <span className="header-left">
-                  <Avatar
-                    src={avatar}
-                    onClick={() => {
-                      goMsgDetail(replyUserId);
-                    }}
-                    size={50}
-                  />
+                  <Avatar src={avatar} size={50} />
                 </span>
                 <span className="header-right">
                   <div className="right-top">
@@ -65,16 +63,14 @@ const Index = () => {
                     <span className="time-right">
                       {getDescribeTime(releaseTime)}
                     </span>
-                    <div className='right-bottom'>{lastMsg}</div>
+                    <div className="right-bottom">{lastMsg}</div>
                   </div>
                 </span>
               </header>
             </div>
           ),
         )}
-        {!messageShowList?.length&&'暂时没有你的消息喔'
-
-        }
+        {!messageShowList?.length && <Empty description="暂时没有你的消息噢" />}
       </main>
     </div>
   );
