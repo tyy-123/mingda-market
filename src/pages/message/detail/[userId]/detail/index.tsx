@@ -14,6 +14,8 @@ const Index = () => {
   const [state, setState] = useUrlState();
   const params: any = useParams();
   const [chatMsg, setChatMsg] = useState<any>([]);
+
+  const [chatContent, setChatContent] = useState('');
   const chatMsgRef: any = useRef([]);
   const { username, avatar } = useUser(params?.userId);
   const { userInfo } = useUser();
@@ -47,49 +49,10 @@ const Index = () => {
       userId: userInfo.userId,
     });
   };
-
-  const handleSendMessage = () => {
-    socket.emit('client_msg', {
-      msg: `用户一发送消息${new Date().getDate()}`,
-      nickName: '测试一下2',
-      userId: userInfo.userId,
-    });
-    console.log('1111111111');
-
-    socket.on('server_msg', (data) => {
-      // const { chatMsg } = this.state;
-      console.log('1111111111');
-      console.log(data);
-      const newChatMsg = chatMsgRef.current.concat(data);
-      const newChatMsgSet = [...new Set(newChatMsg)];
-      setChatMsg(newChatMsgSet);
-      chatMsgRef.current = newChatMsgSet;
-      console.log(newChatMsgSet);
-
-      // chatMsgRef.current = newChatMsg;
-      // console.log(newChatMsg);
-    });
+  const handleChange = (e: any) => {
+    setChatContent(e.target.value);
   };
 
-  // const handleSendMessage2 = () => {
-  //   socket.emit('client_online', {
-  //     nickName: '测试一下2',
-  //     id: params.userId,
-  //   });
-  //   socket.emit('client_msg', {
-  //     msg: '用户二发送消息' + new Date().getDate(),
-  //     nickName: '测试一下2',
-  //     userId: params.userId,
-  //   });
-  //   socket.on('server_msg', (data) => {
-  //     // const { chatMsg } = this.state;
-  //     console.log(data);
-  //     const newChatMsg = chatMsgRef.current.concat(data);
-  //     setChatMsg(newChatMsg);
-  //     chatMsgRef.current = newChatMsg;
-  //     console.log(newChatMsg);
-  //   });
-  // };
   useEffect(() => {
     init();
   }, []);
@@ -141,6 +104,7 @@ const Index = () => {
             message: JSON.stringify(fReserveChatMessage),
           },
         });
+        setChatContent('')
       }
     });
   };
@@ -162,9 +126,6 @@ const Index = () => {
   }, []);
   return (
     <div className="md--message-detail">
-      {/* 这是消息详情页面 */}
-      {/* <div onClick={handleSendMessage}>用户1发送消息</div> */}
-      {/* <div onClick={handleSendMessage2}> 用户2发送消息</div> */}
       <header className="message-detail">
         <span className="left-back" onClick={goBack}>{`< 返回`}</span>
         <span className="chat-title">{username}</span>
@@ -199,7 +160,9 @@ const Index = () => {
           <div>首页</div>
         </div>
         <Input
+          value={chatContent}
           placeholder="✍友善聊天，传递温暖"
+          onChange={handleChange}
           onPressEnter={handlePressEnter}
         />
         <div className="go-home-right">

@@ -31,6 +31,7 @@ const Index = () => {
         avatar,
         username,
         lastMsg: message[message?.length - 1].msg,
+        releaseTime: message[message?.length - 1].times,
       });
     }
     console.log(messageShowList);

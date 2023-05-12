@@ -87,6 +87,11 @@ const Index: React.FC = () => {
 
     if (commentInput) {
       commentInput.style.visibility = 'visible'; // 隐藏选择的元素
+      console.log(myInput.current);
+      commentInput.focus();
+      setTimeout(() => {
+        myInput.current.focus();
+      }, 0);
     }
 
     if (parentCommentId) {
@@ -100,7 +105,6 @@ const Index: React.FC = () => {
     const content = e.target.value;
     setContent(content);
   };
-
   const handlePublishComment = async () => {
     if (!content) {
       message.info('请输入内容再发布');
@@ -182,9 +186,11 @@ const Index: React.FC = () => {
           <div>关闭</div>
         </div>
         <Input
+          ref={myInput}
           value={content}
           placeholder="✍友善评论，传递温暖"
           onChange={handleChange}
+          onPressEnter={handlePublishComment}
         />
         <div className="go-home-right" onClick={handlePublishComment}>
           <HighlightOutlined style={{ color: '#aeaeae' }} />
