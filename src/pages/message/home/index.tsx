@@ -37,7 +37,6 @@ const Index = () => {
     console.log(messageShowList);
     setMessageShowList(messageShowList);
   };
-
   useEffect(() => {
     init();
   }, []);

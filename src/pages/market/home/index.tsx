@@ -72,7 +72,7 @@ const Index = () => {
 
   const init = async (current?: any) => {
     //获取所有帖子
-    const res = await getNoteListAjax.run({});
+    // const res = await getNoteListAjax.run({});
     const res1 = await getNoteListByPageAjax.run({
       params: {
         current: current ? current : 1,

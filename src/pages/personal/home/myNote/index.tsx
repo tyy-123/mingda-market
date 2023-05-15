@@ -29,7 +29,6 @@ const Index = () => {
     <div className='personal-my-note'>
       <ReturnHeader />
       <main className="market-post">
-        帖子列表
         {myNote?.map((item,i:any) => (
           <NoteShow key={item+i} noteMSg={item} />
         ))}

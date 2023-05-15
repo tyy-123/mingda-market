@@ -6,7 +6,7 @@ import {
   ProFormText,
   ProFormUploadButton,
 } from '@ant-design/pro-components';
-import { Button, Col, Form, message, Space, Spin } from 'antd';
+import { Button, Col, Form, message, Space, Spin, Avatar } from 'antd';
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import './index.less';
@@ -60,15 +60,18 @@ const Settings: React.FC<SettingsProps> = () => {
    */
   const handlePersonalSet = async (personalMsg: FormData) => {
     console.log(personalMsg);
-    const { upload,username,userId } = personalMsg;
-    const avatar = await getImgUrlUploadImage(upload[0]);
+    const { username, userId } = personalMsg;
+    let avatar;
+    if (personalMsg?.upload) {
+      avatar = await getImgUrlUploadImage(personalMsg.upload[0]);
+    }
     console.log(avatar);
     try {
       await editAjax.run({
         params: {
           avatar,
           username,
-          userId
+          userId,
         },
       });
       await refreshUser();
